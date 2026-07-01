@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>洛克王国 × 小红书 · 精灵研究生院 独家活动思维导图</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: linear-gradient(135deg, #0d1b4b 0%, #1a2d6e 40%, #0d3060 70%, #071a40 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: #fff;
+  }
+
+  /* 星空背景 */
+  .stars {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .star {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    animation: twinkle var(--d, 3s) ease-in-out infinite;
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.3); }
+  }
+
+  /* 顶部标题区 */
+  .header {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 40px 20px 20px;
+  }
+  .header .badge {
+    display: inline-block;
+    background: linear-gradient(90deg, #ffd700, #ffaa00);
+    color: #1a0d00;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 20px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+  .header h1 {
+    font-size: clamp(22px, 4vw, 38px);
+    font-weight: 900;
+    background: linear-gradient(90deg, #ffd700, #fff 50%, #a8d8ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+    margin-bottom: 8px;
+    text-shadow: none;
+  }
+  .header .subtitle {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 1px;
+  }
+
+  /* 主流程箭头 */
+  .flow-bar {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 20px 20px 0;
+    flex-wrap: wrap;
+  }
+  .flow-step {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+  .flow-node {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    border: 2px solid rgba(147, 197, 253, 0.5);
+    border-radius: 30px;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #bfdbfe;
+    white-space: nowrap;
+    box-shadow: 0 0 20px rgba(37,99,235,0.4);
+    cursor: default;
+  }
+  .flow-arrow {
+    color: #ffd700;
+    font-size: 20px;
+    padding: 0 6px;
+    font-weight: 900;
+  }
+
+  /* 四列主卡片区 */
+  .phases {
+    position: relative;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    padding: 24px 24px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 900px) {
+    .phases { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 540px) {
+    .phases { grid-template-columns: 1fr; }
+  }
+
+  /* 阶段卡片 */
+  .phase-card {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1.5px solid rgba(255,255,255,0.1);
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: default;
+  }
+  .phase-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  }
+
+  /* 阶段1 招生 - 橙金 */
+  .phase-1 { background: linear-gradient(160deg, #2d1a00, #4a2c00); }
+  .phase-1 .phase-header { background: linear-gradient(90deg, #f97316, #fbbf24); }
+  .phase-1 .tag { background: rgba(249,115,22,0.3); color: #fed7aa; border-color: rgba(249,115,22,0.4); }
+  .phase-1 .section-title { color: #fbbf24; }
+
+  /* 阶段2 研习 - 蓝绿 */
+  .phase-2 { background: linear-gradient(160deg, #001a2d, #002d4a); }
+  .phase-2 .phase-header { background: linear-gradient(90deg, #0ea5e9, #22d3ee); }
+  .phase-2 .tag { background: rgba(14,165,233,0.3); color: #bae6fd; border-color: rgba(14,165,233,0.4); }
+  .phase-2 .section-title { color: #22d3ee; }
+
+  /* 阶段3 考试 - 紫 */
+  .phase-3 { background: linear-gradient(160deg, #1a0030, #2d004a); }
+  .phase-3 .phase-header { background: linear-gradient(90deg, #7c3aed, #a855f7); }
+  .phase-3 .tag { background: rgba(124,58,237,0.3); color: #e9d5ff; border-color: rgba(124,58,237,0.4); }
+  .phase-3 .section-title { color: #c084fc; }
+
+  /* 阶段4 学位 - 金绿 */
+  .phase-4 { background: linear-gradient(160deg, #001a10, #002d1a); }
+  .phase-4 .phase-header { background: linear-gradient(90deg, #16a34a, #4ade80); }
+  .phase-4 .tag { background: rgba(22,163,74,0.3); color: #bbf7d0; border-color: rgba(22,163,74,0.4); }
+  .phase-4 .section-title { color: #4ade80; }
+
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+  }
+  .phase-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 900; color: #fff;
+    flex-shrink: 0;
+  }
+  .phase-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: #fff;
+  }
+  .phase-icon {
+    margin-left: auto;
+    font-size: 22px;
+  }
+
+  .phase-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .section {
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 12px 14px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .section-title {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .section-title::before {
+    content: '';
+    display: inline-block;
+    width: 3px; height: 12px;
+    border-radius: 2px;
+    background: currentColor;
+    flex-shrink: 0;
+  }
+
+  .item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .item {
+    font-size: 12px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.5;
+    padding-left: 12px;
+    position: relative;
+  }
+  .item::before {
+    content: '·';
+    position: absolute;
+    left: 2px;
+    color: rgba(255,255,255,0.4);
+  }
+  .item .sub {
+    color: rgba(255,255,255,0.5);
+    font-size: 11px;
+    display: block;
+    padding-left: 8px;
+    margin-top: 2px;
+  }
+
+  /* 标签 */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+  }
+  .tag {
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 20px;
+    border: 1px solid;
+    font-weight: 600;
+  }
+
+  /* 亮点高亮条 */
+  .highlight {
+    background: rgba(255, 213, 0, 0.1);
+    border-left: 3px solid #ffd700;
+    border-radius: 0 8px 8px 0;
+    padding: 8px 10px;
+    font-size: 11.5px;
+    color: #fde68a;
+    line-height: 1.5;
+    margin-top: 2px;
+  }
+
+  /* 底部说明 */
+  .footer {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 0 20px 40px;
+  }
+  .footer-inner {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 10px 20px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+  }
+  .footer-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #ffd700;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+</style>
+</head>
+<body>
+
+<!-- 星空 -->
+<div class="stars" id="stars"></div>
+
+<!-- 标题 -->
+<div class="header">
+  <div class="badge">🎓 洛克王国 × 小红书 独家活动</div>
+  <h1>精灵研究生院</h1>
+  <div class="subtitle">任务学分获得制 · 四阶段完整用户旅程</div>
+</div>
+
+<!-- 主流程 -->
+<div class="flow-bar">
+  <div class="flow-step">
+    <div class="flow-node">🏫 学院招生</div>
+    <div class="flow-arrow">››</div>
+  </div>
+  <div class="flow-step">
+    <div class="flow-node">📚 入学研习</div>
+    <div class="flow-arrow">››</div>
+  </div>
+  <div class="flow-step">
+    <div class="flow-node">📝 学位考试</div>
+    <div class="flow-arrow">››</div>
+  </div>
+  <div class="flow-step">
+    <div class="flow-node">🎓 学位获得</div>
+  </div>
+</div>
+
+<!-- 四列内容 -->
+<div class="phases">
+
+  <!-- 阶段1：学院招生 -->
+  <div class="phase-card phase-1">
+    <div class="phase-header">
+      <div class="phase-num">01</div>
+      <div class="phase-title">学院招生</div>
+      <div class="phase-icon">🏫</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="section">
+        <div class="section-title">招生简章发布</div>
+        <div class="item-list">
+          <div class="item">洛克王国 × 游戏薯 共创发布
+            <span class="sub">「精灵研究生院」官方招生简章</span>
+          </div>
+          <div class="item">发布笔记即入学
+            <span class="sub">入学即送 独家游戏道具</span>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">三大研究方向</span>
+          <span class="tag">八大属性</span>
+          <span class="tag">带教导师</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">师兄师姐入学体验</div>
+        <div class="item-list">
+          <div class="item">各方向生态作者约稿</div>
+          <div class="item">分享研究院入学心得 / Vlog</div>
+          <div class="item">招揽同门学弟妹</div>
+        </div>
+      </div>
+
+      <div class="highlight">
+        ⚡ 官方+达人双线引流，降低用户入场门槛
+      </div>
+    </div>
+  </div>
+
+  <!-- 阶段2：入学研习 -->
+  <div class="phase-card phase-2">
+    <div class="phase-header">
+      <div class="phase-num">02</div>
+      <div class="phase-title">入学研习</div>
+      <div class="phase-icon">📚</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="section">
+        <div class="section-title">八大派系精灵应援</div>
+        <div class="item-list">
+          <div class="item">洛克测试问答
+            <span class="sub">「你是哪只洛克精灵？」</span>
+          </div>
+          <div class="item">引导用户加入属性派系</div>
+          <div class="item">精灵属性话题数据排行</div>
+          <div class="item">为喜爱精灵打 call 助力登顶
+            <span class="sub">解锁线下派系特展 / 游戏内下一个徽章</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">教材研习 & 研究成果</div>
+        <div class="item-list">
+          <div class="item">作者按周期约稿：教材研习内容</div>
+          <div class="item">UGC 激励活动：发布研究成果笔记</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">红薯研究生院表白墙</div>
+        <div class="item-list">
+          <div class="item">洛克表白精灵
+            <span class="sub">「借楼，我的本命精灵是xxx」</span>
+          </div>
+          <div class="item">精灵表白主人
+            <span class="sub">「我是一只水系精灵...我的主人...」</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight">
+        ⚡ 测试+互动+UGC三重机制，持续产出内容
+      </div>
+    </div>
+  </div>
+
+  <!-- 阶段3：学位考试 -->
+  <div class="phase-card phase-3">
+    <div class="phase-header">
+      <div class="phase-num">03</div>
+      <div class="phase-title">学位考试</div>
+      <div class="phase-icon">📝</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="section">
+        <div class="section-title">全民出卷</div>
+        <div class="item-list">
+          <div class="item">游戏侧与导师出压轴题</div>
+          <div class="item">全站洛克玩家征集
+            <span class="sub">共创毕业考试试卷</span>
+          </div>
+        </div>
+        <div class="highlight" style="margin-top:8px;">
+          📌 UGC 活动尾声阶段释放，收尾造势
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">考试流程</div>
+        <div class="item-list">
+          <div class="item">完成测试试卷答题</div>
+          <div class="item">得分结果分享
+            <span class="sub">晒分笔记引发二次传播</span>
+          </div>
+          <div class="item">高分 / 满分奖励
+            <span class="sub">游戏周边实物奖励</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight">
+        ⚡ 考试天然具备「分享欲」，低门槛裂变传播
+      </div>
+    </div>
+  </div>
+
+  <!-- 阶段4：学位获得 -->
+  <div class="phase-card phase-4">
+    <div class="phase-header">
+      <div class="phase-num">04</div>
+      <div class="phase-title">学位获得</div>
+      <div class="phase-icon">🎓</div>
+    </div>
+    <div class="phase-body">
+
+      <div class="section">
+        <div class="section-title">毕业证书周边</div>
+        <div class="item-list">
+          <div class="item">获得硕士学位证书实体周边</div>
+          <div class="item">洛克王国新生入学通知书礼盒</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">学位授予典礼</div>
+        <div class="item-list">
+          <div class="item">结合 REDLAND 线下活动</div>
+          <div class="item" style="color:#86efac; font-weight:600;">🌟 线下拨穗仪式（高 KA 环节）</div>
+          <div class="item">累计足够学分解锁资格
+            <span class="sub">完成前述所有任务获取学分</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight">
+        ⚡ 线上-线下全贯通，REDLAND 强结合，给核心用户最高荣誉感
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- 底部 -->
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-dot"></div>
+    <span>核心逻辑：任务学分制 · 笔记发布即参与 · UGC × 达人 × 官方三线联动</span>
+    <div class="footer-dot"></div>
+  </div>
+</div>
+
+<script>
+// 生成星空
+const starsEl = document.getElementById('stars');
+for (let i = 0; i < 120; i++) {
+  const s = document.createElement('div');
+  s.className = 'star';
+  const size = Math.random() * 2.5 + 0.5;
+  s.style.cssText = `
+    left: ${Math.random()*100}%;
+    top: ${Math.random()*100}%;
+    width: ${size}px;
+    height: ${size}px;
+    --d: ${(Math.random()*3+2).toFixed(1)}s;
+    animation-delay: ${(Math.random()*4).toFixed(1)}s;
+    opacity: ${Math.random()*0.5+0.1};
+  `;
+  starsEl.appendChild(s);
+}
+</script>
+</body>
+</html>
