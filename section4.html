@@ -3,346 +3,424 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>四、活动思路 · 洛克王国精灵研究生院</title>
+<title>活动思路 · 思维导图</title>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 
 body {
   font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  background: #fff;
-  color: #1a1a1a;
-  padding: 40px 36px 60px;
-  max-width: 1100px;
+  background: #f5f4f0;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 24px 60px;
+}
+
+.map {
+  width: 100%;
+  max-width: 1060px;
+}
+
+/* 顶部主题节点 */
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0;
+}
+.root-node {
+  background: #1a1a1a;
+  color: #fff;
+  border-radius: 14px;
+  padding: 14px 36px;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-align: center;
+}
+.root-sub {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #888;
+  letter-spacing: 1px;
+}
+
+/* 竖线从根到主干 */
+.v-line {
+  width: 2px;
+  background: #ccc;
   margin: 0 auto;
 }
+.v-line-short { height: 20px; }
+.v-line-mid { height: 32px; }
 
-/* 大标题 */
-h1 {
-  font-size: 28px;
-  font-weight: 900;
-  margin-bottom: 8px;
-  color: #111;
+/* 横线主干 */
+.h-trunk {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  gap: 0;
 }
-.flow-line {
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 30px;
-}
-.flow-line span {
-  color: #111;
-  font-weight: 600;
-}
-.flow-line span + span::before {
-  content: ' —— ';
-  color: #aaa;
+/* 横线连接器 */
+.h-bar {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 2px;
+  background: #ccc;
+  /* 宽度由 JS 撑开 / 或直接 CSS 处理 */
 }
 
-/* 四列容器 */
-.cols {
+/* 四列 */
+.phases {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  align-items: start;
+  gap: 16px;
+  width: 100%;
+  position: relative;
 }
 
-/* 列标题 */
-.col-title {
-  font-size: 15px;
-  font-weight: 800;
-  color: #111;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #111;
-  margin-bottom: 14px;
+/* 顶部横连线 */
+.phases::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: calc(12.5% );
+  right: calc(12.5%);
+  height: 2px;
+  background: #ccc;
+  z-index: 0;
 }
 
-/* 一级条目 */
-.item {
-  margin-bottom: 14px;
-}
-.item-title {
-  font-size: 13.5px;
-  font-weight: 700;
-  color: #111;
-  margin-bottom: 5px;
+.phase {
   display: flex;
-  align-items: flex-start;
-  gap: 6px;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }
-.item-title::before {
-  content: '●';
-  color: #111;
-  font-size: 10px;
-  margin-top: 3px;
+
+/* 从横线往下的竖线 */
+.phase::before {
+  content: '';
+  display: block;
+  width: 2px;
+  height: 20px;
+  background: #ccc;
   flex-shrink: 0;
 }
-.item-body {
-  font-size: 12.5px;
-  color: #444;
-  line-height: 1.65;
-  padding-left: 16px;
+
+/* 阶段主节点 */
+.phase-node {
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 800;
+  text-align: center;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  line-height: 1.3;
 }
 
-/* 二级子条目 */
-.sub-list {
-  margin-top: 5px;
-  padding-left: 4px;
-}
-.sub-item {
-  font-size: 12px;
-  color: #555;
-  line-height: 1.6;
-  padding-left: 14px;
-  position: relative;
+/* 阶段编号 */
+.phase-num {
+  font-size: 10px;
+  font-weight: 600;
+  opacity: .6;
   margin-bottom: 2px;
 }
-.sub-item::before {
-  content: '○';
-  position: absolute;
-  left: 0;
-  font-size: 10px;
-  color: #888;
-  top: 1px;
-}
 
-/* 图片卡片 */
-.note-card {
-  display: flex;
-  gap: 8px;
-  align-items: flex-start;
-  background: #f7f7f7;
-  border-radius: 8px;
-  padding: 8px 10px;
-  margin-top: 8px;
-  margin-bottom: 4px;
-}
-.note-thumb {
-  width: 52px;
-  height: 52px;
-  border-radius: 6px;
-  object-fit: cover;
+/* 颜色方案 */
+.c1 .phase-node { background: #fff3e0; color: #bf5500; border: 1.5px solid #ffb74d; }
+.c1 .phase-node .phase-num { color: #bf5500; }
+.c1 .branch-line { background: #ffb74d; }
+.c1 .leaf { border-color: #ffb74d; color: #7a3500; }
+.c1 .leaf-icon { background: #fff3e0; color: #bf5500; }
+.c1 .tag { background: #fff3e0; color: #bf5500; border-color: #ffcc80; }
+
+.c2 .phase-node { background: #e3f2fd; color: #0d5c99; border: 1.5px solid #64b5f6; }
+.c2 .phase-node .phase-num { color: #0d5c99; }
+.c2 .branch-line { background: #64b5f6; }
+.c2 .leaf { border-color: #64b5f6; color: #063a6b; }
+.c2 .leaf-icon { background: #e3f2fd; color: #0d5c99; }
+.c2 .tag { background: #e3f2fd; color: #0d5c99; border-color: #90caf9; }
+
+.c3 .phase-node { background: #f3e5f5; color: #6a1b9a; border: 1.5px solid #ba68c8; }
+.c3 .phase-node .phase-num { color: #6a1b9a; }
+.c3 .branch-line { background: #ba68c8; }
+.c3 .leaf { border-color: #ba68c8; color: #4a0f6e; }
+.c3 .leaf-icon { background: #f3e5f5; color: #6a1b9a; }
+.c3 .tag { background: #f3e5f5; color: #6a1b9a; border-color: #ce93d8; }
+
+.c4 .phase-node { background: #e8f5e9; color: #1b5e20; border: 1.5px solid #66bb6a; }
+.c4 .phase-node .phase-num { color: #1b5e20; }
+.c4 .branch-line { background: #66bb6a; }
+.c4 .leaf { border-color: #66bb6a; color: #0d3b11; }
+.c4 .leaf-icon { background: #e8f5e9; color: #2e7d32; }
+.c4 .tag { background: #e8f5e9; color: #1b5e20; border-color: #a5d6a7; }
+
+/* 竖线连接 phase-node → 子条目 */
+.branch-line {
+  width: 2px;
+  height: 16px;
   flex-shrink: 0;
-  background: #e0e0e0;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 9px; color: #aaa;
-}
-.note-info {
-  flex: 1; min-width: 0;
-}
-.note-info .title {
-  font-size: 11.5px;
-  font-weight: 600;
-  color: #222;
-  line-height: 1.4;
-  margin-bottom: 3px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-.note-info .meta {
-  font-size: 10px;
-  color: #888;
 }
 
-/* highlight 黄底 */
-.hl-yellow {
-  background: #fff740;
-  padding: 0 2px;
+/* 子条目容器 */
+.leaves {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 100%;
 }
 
-/* 图片组 */
-.img-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 4px;
-  margin-top: 8px;
+/* 每个叶子节点 */
+.leaf {
+  background: #fff;
+  border: 1.5px solid;
+  border-radius: 8px;
+  padding: 9px 11px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  position: relative;
 }
-.img-grid-item {
-  aspect-ratio: 1;
+.leaf-icon {
+  width: 24px; height: 24px;
   border-radius: 6px;
-  background: #e8e8e8;
-  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
 }
-.img-grid-item img {
-  width: 100%; height: 100%; object-fit: cover;
+.leaf-content { flex: 1; min-width: 0; }
+.leaf-title {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 3px;
 }
-
-/* 分割线 */
-.divider { height: 1px; background: #eee; margin: 10px 0; }
-
-/* 注释小字 */
-.note-small {
+.leaf-desc {
   font-size: 11px;
-  color: #888;
-  font-style: italic;
-  margin-top: 6px;
-  padding-left: 16px;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* 标签 */
+.tags { display:flex; flex-wrap:wrap; gap:4px; margin-top:5px; }
+.tag {
+  font-size: 10px; padding: 2px 7px;
+  border-radius: 20px; border: 1px solid;
+  font-weight: 600;
+}
+
+/* 重点标记 */
+.star {
+  display: inline-block;
+  background: #fff740;
+  border-radius: 3px;
+  padding: 0 3px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #333;
+  margin-left: 4px;
+  vertical-align: middle;
 }
 </style>
 </head>
 <body>
+<div class="map">
 
-<h1>四、活动思路</h1>
-<div class="flow-line">
-  <span>学院招生</span><span>入学研习</span><span>学位考试</span><span>学位获得</span>
-  （学分累计制）
+  <!-- 根节点 -->
+  <div class="root">
+    <div class="root-node">洛克王国精灵研究生院 · 活动思路</div>
+    <div class="root-sub">学分累计制 · 笔记发布即入学</div>
+  </div>
+
+  <!-- 从根往下的竖线 -->
+  <div class="v-line v-line-short"></div>
+
+  <!-- 四列阶段 -->
+  <div class="phases">
+
+    <!-- 01 学院招生 -->
+    <div class="phase c1">
+      <div class="phase-node">
+        <div class="phase-num">STEP 01</div>
+        🏫 学院招生
+      </div>
+      <div class="branch-line"></div>
+      <div class="leaves">
+
+        <div class="leaf">
+          <div class="leaf-icon">📋</div>
+          <div class="leaf-content">
+            <div class="leaf-title">招生简章联合发布</div>
+            <div class="leaf-desc">洛克王国 × 游戏薯 共创发布<br>入学即送独家道具</div>
+          </div>
+        </div>
+
+        <div class="leaf">
+          <div class="leaf-icon">🎬</div>
+          <div class="leaf-content">
+            <div class="leaf-title">师兄师姐入学 Vlog</div>
+            <div class="leaf-desc">生态作者约稿，招揽同门</div>
+          </div>
+        </div>
+
+        <div class="leaf">
+          <div class="leaf-icon">🔬</div>
+          <div class="leaf-content">
+            <div class="leaf-title">三大研究方向</div>
+            <div class="tags">
+              <span class="tag">精灵学概论</span>
+              <span class="tag">精灵学美育</span>
+              <span class="tag">精灵学实务</span>
+            </div>
+            <div class="leaf-desc" style="margin-top:4px;">各方向设带教导师，周期更新教材</div>
+          </div>
+        </div>
+
+        <div class="leaf">
+          <div class="leaf-icon">🛡️</div>
+          <div class="leaf-content">
+            <div class="leaf-title">八大派系精灵应援</div>
+            <div class="leaf-desc">草/水/岩/火/冰/电/翼/幽<br>话题数据排行，第一派系解锁线下特展</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 02 入学研习 -->
+    <div class="phase c2">
+      <div class="phase-node">
+        <div class="phase-num">STEP 02</div>
+        📚 入学研习
+      </div>
+      <div class="branch-line"></div>
+      <div class="leaves">
+
+        <div class="leaf">
+          <div class="leaf-icon">🧪</div>
+          <div class="leaf-content">
+            <div class="leaf-title">派系测试 H5</div>
+            <div class="leaf-desc">「你是哪只洛克精灵？」<br>结果页引导应援打 call</div>
+          </div>
+        </div>
+
+        <div class="leaf">
+          <div class="leaf-icon">📖</div>
+          <div class="leaf-content">
+            <div class="leaf-title">教材研习</div>
+            <div class="leaf-desc">导师按周期约稿编纂教材<br>活动页分 tab 承接三方向</div>
+          </div>
+        </div>
+
+        <div class="leaf">
+          <div class="leaf-icon">✍️</div>
+          <div class="leaf-content">
+            <div class="leaf-title">UGC 激励·发布研究成果</div>
+            <div class="leaf-desc">发布笔记 = 提交研究成果<br>创作中心激励任务同步发布</div>
+          </div>
+        </div>
+
+        <div class="leaf">
+          <div class="leaf-icon">💌</div>
+          <div class="leaf-content">
+            <div class="leaf-title">表白墙话题专栏</div>
+            <div class="leaf-desc">流量券激励<br>「借楼，我的本命精灵是…」</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 03 学位考试 -->
+    <div class="phase c3">
+      <div class="phase-node">
+        <div class="phase-num">STEP 03</div>
+        📝 学位考试
+      </div>
+      <div class="branch-line"></div>
+      <div class="leaves">
+
+        <div class="leaf">
+          <div class="leaf-icon">📋</div>
+          <div class="leaf-content">
+            <div class="leaf-title">全民出卷</div>
+            <div class="leaf-desc">全站玩家投稿题目 + 导师压轴题<br>官方 × 用户 × 作者三方共创试卷</div>
+          </div>
+        </div>
+
+        <div class="leaf">
+          <div class="leaf-icon">🎯</div>
+          <div class="leaf-content">
+            <div class="leaf-title">答题 · 晒分 · 领奖</div>
+            <div class="leaf-desc">完成测试 → 分享成绩<br>高分/满分赢游戏周边</div>
+            <div class="tags" style="margin-top:4px;">
+              <span class="tag">100分 留校任教</span>
+              <span class="tag">≥90 可以毕业</span>
+              <span class="tag">&lt;60 重新入学</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="leaf" style="background:#fdf6ff;">
+          <div class="leaf-icon">⏰</div>
+          <div class="leaf-content">
+            <div class="leaf-title">节奏：活动尾声释放</div>
+            <div class="leaf-desc">最后一周上线，制造冲刺感</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 04 学位获得 -->
+    <div class="phase c4">
+      <div class="phase-node">
+        <div class="phase-num">STEP 04</div>
+        🎓 学位获得
+      </div>
+      <div class="branch-line"></div>
+      <div class="leaves">
+
+        <div class="leaf">
+          <div class="leaf-icon">📜</div>
+          <div class="leaf-content">
+            <div class="leaf-title">学位证书周边</div>
+            <div class="leaf-desc">硕士学位证书实体周边<br>洛克王国新生入学通知书礼盒</div>
+          </div>
+        </div>
+
+        <div class="leaf" style="border-width:2px;">
+          <div class="leaf-icon">👑</div>
+          <div class="leaf-content">
+            <div class="leaf-title">学位授予典礼<span class="star">🌟 高 KA</span></div>
+            <div class="leaf-desc">结合 10 月 REDLAND 线下展台<br>Coser 扮演研究员执行拨穗仪式</div>
+            <div class="tags" style="margin-top:4px;">
+              <span class="tag">精灵特展</span>
+              <span class="tag">导师公开课</span>
+              <span class="tag">精灵抓捕彩蛋</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="leaf">
+          <div class="leaf-icon">🏅</div>
+          <div class="leaf-content">
+            <div class="leaf-title">学分解锁机制</div>
+            <div class="leaf-desc">完成前序所有任务累计学分<br>达标方可参与线下拨穗仪式</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
 </div>
-
-<div class="cols">
-
-  <!-- 列1：学院招生 -->
-  <div class="col">
-    <div class="col-title">学院招生</div>
-
-    <div class="item">
-      <div class="item-title">招生简章发布</div>
-      <div class="item-body">
-        洛克王国&游戏薯共创发布精灵研究生院招生简章，入学（笔记发布）即送独家道具
-        <div class="sub-list">
-          <div class="sub-item">三大招生方向</div>
-          <div class="sub-item">八大属性研究</div>
-          <div class="sub-item">带教导师指导</div>
-        </div>
-      </div>
-      <!-- 示例笔记卡片 -->
-      <div class="note-card">
-        <div class="note-thumb">📋</div>
-        <div class="note-info">
-          <div class="title">洛克王国魔法学院2026研究生接收调剂公告</div>
-          <div class="meta">❤️ 12721 &nbsp;☆ 1993</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="item">
-      <div class="item-title">师兄师姐入学体验/vlog</div>
-      <div class="item-body">
-        各方向生态作者约稿，分享研究院入学心得/招揽同门学弟妹
-      </div>
-      <div class="note-card">
-        <div class="note-thumb">🎬</div>
-        <div class="note-info">
-          <div class="title">染上洛克王国的后果只有一种……</div>
-          <div class="meta">❤️ 11750 &nbsp;☆ 1872</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 列2：入学研习 -->
-  <div class="col">
-    <div class="col-title">入学研习</div>
-
-    <div class="item">
-      <div class="item-title">选择研究属性 八大派系精灵应援</div>
-      <div class="item-body">
-        洛克测试问答「你是哪只洛克精灵」，引导其属性派系应援；
-        <div style="margin-top:6px;">
-          <img src="https://xhs-doc.xhscdn.com/104004dg321r7oq3gmu03gps31o?redoc-w=600" 
-               style="width:100%;border-radius:8px;margin-bottom:6px;" 
-               onerror="this.style.display='none'">
-        </div>
-        精灵属性话题数据排行，为你喜爱的精灵派系打call，助力ta登顶，解锁线下派系特展///游戏内下一个徽章
-        <div style="margin-top:6px;">
-          <img src="https://xhs-doc.xhscdn.com/104004dg3222l9rq6ms0f6s9ems?redoc-w=600" 
-               style="width:100%;border-radius:8px;" 
-               onerror="this.style.display='none'">
-        </div>
-      </div>
-    </div>
-
-    <div class="item">
-      <div class="item-title">教材研习/研究成果</div>
-      <div class="item-body">
-        作者by周期约稿：教材研习<br>
-        UGC激励活动：发布研究成果
-      </div>
-    </div>
-
-    <div class="item">
-      <div class="item-title">红薯研究生院表白墙</div>
-      <div class="item-body">
-        流量券激励：高校表白墙文学<br>
-        「借楼，我的本命精灵是xxx」<br>
-        「墙墙，捞一个洛克……」
-      </div>
-    </div>
-  </div>
-
-  <!-- 列3：学位考试 -->
-  <div class="col">
-    <div class="col-title">学位考试</div>
-
-    <div class="item">
-      <div class="item-title">全民出卷</div>
-      <div class="item-body">
-        <div class="sub-list">
-          <div class="sub-item">游戏侧与导师压轴题</div>
-          <div class="sub-item">全站洛克玩家征集毕业考试的试卷、共创试卷</div>
-        </div>
-        <div style="margin-top:8px;">
-          <img src="https://xhs-doc.xhscdn.com/104004dg321prjou4700furm214?redoc-w=300" 
-               style="width:60%;display:block;margin:0 auto;border-radius:8px;" 
-               onerror="this.style.display='none'">
-        </div>
-      </div>
-    </div>
-
-    <div class="item">
-      <div class="item-title">学位考试</div>
-      <div class="item-body">
-        测试试卷——得分分享——高分/满分奖励周边
-        <div style="margin-top:8px;">
-          <img src="https://xhs-doc.xhscdn.com/104004dg321prkttt720c6vb5g0?redoc-w=600" 
-               style="width:100%;border-radius:8px;" 
-               onerror="this.style.display='none'">
-        </div>
-      </div>
-    </div>
-
-    <div class="note-small">*该部分ugc活动尾声释放</div>
-  </div>
-
-  <!-- 列4：学位获得 -->
-  <div class="col">
-    <div class="col-title">学位获得</div>
-
-    <div class="item">
-      <div class="item-body">获得硕士学位证书周边</div>
-    </div>
-
-    <div class="item">
-      <div class="item-title">学位授予典礼</div>
-      <div class="item-body">
-        <span class="hl-yellow">redland结合——线下拨穗仪式</span><br><br>
-        完成前述任务，用户累计获取到足够学分可解锁线下高k拨穗仪式
-      </div>
-    </div>
-
-    <!-- 示例笔记卡片 -->
-    <div class="note-card">
-      <div class="note-thumb">📣</div>
-      <div class="note-info">
-        <div class="title">起猛了，看到邓布利多……</div>
-        <div class="meta">#二次元毕业季 &nbsp;❤️ 6088</div>
-      </div>
-    </div>
-    <div class="note-card">
-      <div class="note-thumb">📬</div>
-      <div class="note-info">
-        <div class="title">洛克王国世界入学通知书</div>
-        <div class="meta">#洛克王国世界 &nbsp;❤️ 20</div>
-      </div>
-    </div>
-
-    <div style="margin-top:10px;">
-      <img src="https://xhs-doc.xhscdn.com/104004dg321r7rko97204gtld4g?redoc-w=600" 
-           style="width:100%;border-radius:8px;" 
-           onerror="this.style.display='none'">
-    </div>
-  </div>
-
-</div>
-
 </body>
 </html>
