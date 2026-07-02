@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>四、活动思路 · 洛克王国精灵研究生院</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: #fff;
+  color: #1a1a1a;
+  padding: 40px 36px 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* 大标题 */
+h1 {
+  font-size: 28px;
+  font-weight: 900;
+  margin-bottom: 8px;
+  color: #111;
+}
+.flow-line {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 30px;
+}
+.flow-line span {
+  color: #111;
+  font-weight: 600;
+}
+.flow-line span + span::before {
+  content: ' —— ';
+  color: #aaa;
+}
+
+/* 四列容器 */
+.cols {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+/* 列标题 */
+.col-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: #111;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #111;
+  margin-bottom: 14px;
+}
+
+/* 一级条目 */
+.item {
+  margin-bottom: 14px;
+}
+.item-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+.item-title::before {
+  content: '●';
+  color: #111;
+  font-size: 10px;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+.item-body {
+  font-size: 12.5px;
+  color: #444;
+  line-height: 1.65;
+  padding-left: 16px;
+}
+
+/* 二级子条目 */
+.sub-list {
+  margin-top: 5px;
+  padding-left: 4px;
+}
+.sub-item {
+  font-size: 12px;
+  color: #555;
+  line-height: 1.6;
+  padding-left: 14px;
+  position: relative;
+  margin-bottom: 2px;
+}
+.sub-item::before {
+  content: '○';
+  position: absolute;
+  left: 0;
+  font-size: 10px;
+  color: #888;
+  top: 1px;
+}
+
+/* 图片卡片 */
+.note-card {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  background: #f7f7f7;
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-top: 8px;
+  margin-bottom: 4px;
+}
+.note-thumb {
+  width: 52px;
+  height: 52px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: #e0e0e0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; color: #aaa;
+}
+.note-info {
+  flex: 1; min-width: 0;
+}
+.note-info .title {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #222;
+  line-height: 1.4;
+  margin-bottom: 3px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.note-info .meta {
+  font-size: 10px;
+  color: #888;
+}
+
+/* highlight 黄底 */
+.hl-yellow {
+  background: #fff740;
+  padding: 0 2px;
+}
+
+/* 图片组 */
+.img-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  margin-top: 8px;
+}
+.img-grid-item {
+  aspect-ratio: 1;
+  border-radius: 6px;
+  background: #e8e8e8;
+  overflow: hidden;
+}
+.img-grid-item img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+
+/* 分割线 */
+.divider { height: 1px; background: #eee; margin: 10px 0; }
+
+/* 注释小字 */
+.note-small {
+  font-size: 11px;
+  color: #888;
+  font-style: italic;
+  margin-top: 6px;
+  padding-left: 16px;
+}
+</style>
+</head>
+<body>
+
+<h1>四、活动思路</h1>
+<div class="flow-line">
+  <span>学院招生</span><span>入学研习</span><span>学位考试</span><span>学位获得</span>
+  （学分累计制）
+</div>
+
+<div class="cols">
+
+  <!-- 列1：学院招生 -->
+  <div class="col">
+    <div class="col-title">学院招生</div>
+
+    <div class="item">
+      <div class="item-title">招生简章发布</div>
+      <div class="item-body">
+        洛克王国&游戏薯共创发布精灵研究生院招生简章，入学（笔记发布）即送独家道具
+        <div class="sub-list">
+          <div class="sub-item">三大招生方向</div>
+          <div class="sub-item">八大属性研究</div>
+          <div class="sub-item">带教导师指导</div>
+        </div>
+      </div>
+      <!-- 示例笔记卡片 -->
+      <div class="note-card">
+        <div class="note-thumb">📋</div>
+        <div class="note-info">
+          <div class="title">洛克王国魔法学院2026研究生接收调剂公告</div>
+          <div class="meta">❤️ 12721 &nbsp;☆ 1993</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-title">师兄师姐入学体验/vlog</div>
+      <div class="item-body">
+        各方向生态作者约稿，分享研究院入学心得/招揽同门学弟妹
+      </div>
+      <div class="note-card">
+        <div class="note-thumb">🎬</div>
+        <div class="note-info">
+          <div class="title">染上洛克王国的后果只有一种……</div>
+          <div class="meta">❤️ 11750 &nbsp;☆ 1872</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 列2：入学研习 -->
+  <div class="col">
+    <div class="col-title">入学研习</div>
+
+    <div class="item">
+      <div class="item-title">选择研究属性 八大派系精灵应援</div>
+      <div class="item-body">
+        洛克测试问答「你是哪只洛克精灵」，引导其属性派系应援；
+        <div style="margin-top:6px;">
+          <img src="https://xhs-doc.xhscdn.com/104004dg321r7oq3gmu03gps31o?redoc-w=600" 
+               style="width:100%;border-radius:8px;margin-bottom:6px;" 
+               onerror="this.style.display='none'">
+        </div>
+        精灵属性话题数据排行，为你喜爱的精灵派系打call，助力ta登顶，解锁线下派系特展///游戏内下一个徽章
+        <div style="margin-top:6px;">
+          <img src="https://xhs-doc.xhscdn.com/104004dg3222l9rq6ms0f6s9ems?redoc-w=600" 
+               style="width:100%;border-radius:8px;" 
+               onerror="this.style.display='none'">
+        </div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-title">教材研习/研究成果</div>
+      <div class="item-body">
+        作者by周期约稿：教材研习<br>
+        UGC激励活动：发布研究成果
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-title">红薯研究生院表白墙</div>
+      <div class="item-body">
+        流量券激励：高校表白墙文学<br>
+        「借楼，我的本命精灵是xxx」<br>
+        「墙墙，捞一个洛克……」
+      </div>
+    </div>
+  </div>
+
+  <!-- 列3：学位考试 -->
+  <div class="col">
+    <div class="col-title">学位考试</div>
+
+    <div class="item">
+      <div class="item-title">全民出卷</div>
+      <div class="item-body">
+        <div class="sub-list">
+          <div class="sub-item">游戏侧与导师压轴题</div>
+          <div class="sub-item">全站洛克玩家征集毕业考试的试卷、共创试卷</div>
+        </div>
+        <div style="margin-top:8px;">
+          <img src="https://xhs-doc.xhscdn.com/104004dg321prjou4700furm214?redoc-w=300" 
+               style="width:60%;display:block;margin:0 auto;border-radius:8px;" 
+               onerror="this.style.display='none'">
+        </div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-title">学位考试</div>
+      <div class="item-body">
+        测试试卷——得分分享——高分/满分奖励周边
+        <div style="margin-top:8px;">
+          <img src="https://xhs-doc.xhscdn.com/104004dg321prkttt720c6vb5g0?redoc-w=600" 
+               style="width:100%;border-radius:8px;" 
+               onerror="this.style.display='none'">
+        </div>
+      </div>
+    </div>
+
+    <div class="note-small">*该部分ugc活动尾声释放</div>
+  </div>
+
+  <!-- 列4：学位获得 -->
+  <div class="col">
+    <div class="col-title">学位获得</div>
+
+    <div class="item">
+      <div class="item-body">获得硕士学位证书周边</div>
+    </div>
+
+    <div class="item">
+      <div class="item-title">学位授予典礼</div>
+      <div class="item-body">
+        <span class="hl-yellow">redland结合——线下拨穗仪式</span><br><br>
+        完成前述任务，用户累计获取到足够学分可解锁线下高k拨穗仪式
+      </div>
+    </div>
+
+    <!-- 示例笔记卡片 -->
+    <div class="note-card">
+      <div class="note-thumb">📣</div>
+      <div class="note-info">
+        <div class="title">起猛了，看到邓布利多……</div>
+        <div class="meta">#二次元毕业季 &nbsp;❤️ 6088</div>
+      </div>
+    </div>
+    <div class="note-card">
+      <div class="note-thumb">📬</div>
+      <div class="note-info">
+        <div class="title">洛克王国世界入学通知书</div>
+        <div class="meta">#洛克王国世界 &nbsp;❤️ 20</div>
+      </div>
+    </div>
+
+    <div style="margin-top:10px;">
+      <img src="https://xhs-doc.xhscdn.com/104004dg321r7rko97204gtld4g?redoc-w=600" 
+           style="width:100%;border-radius:8px;" 
+           onerror="this.style.display='none'">
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
