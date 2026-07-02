@@ -3,493 +3,584 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>洛克王国 × 小红书 · 精灵研究生院 独家活动思维导图</title>
+<title>洛克王国 × 小红书 · 精灵研究生院 独家活动方案</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin:0; padding:0; box-sizing:border-box; }
 
-  body {
-    font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
-    background: linear-gradient(135deg, #0d1b4b 0%, #1a2d6e 40%, #0d3060 70%, #071a40 100%);
-    min-height: 100vh;
-    overflow-x: hidden;
-    color: #fff;
-  }
+body {
+  font-family: 'PingFang SC','Microsoft YaHei',sans-serif;
+  background: #0a0f2e;
+  min-height: 100vh;
+  color: #fff;
+  overflow-x: hidden;
+}
 
-  /* 星空背景 */
-  .stars {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 0;
-  }
-  .star {
-    position: absolute;
-    background: #fff;
-    border-radius: 50%;
-    animation: twinkle var(--d, 3s) ease-in-out infinite;
-  }
-  @keyframes twinkle {
-    0%, 100% { opacity: 0.2; transform: scale(1); }
-    50% { opacity: 0.9; transform: scale(1.3); }
-  }
+/* ===== 星空背景 ===== */
+#stars-canvas {
+  position: fixed; top:0; left:0; width:100%; height:100%;
+  pointer-events:none; z-index:0;
+}
 
-  /* 顶部标题区 */
-  .header {
-    position: relative;
-    z-index: 10;
-    text-align: center;
-    padding: 40px 20px 20px;
-  }
-  .header .badge {
-    display: inline-block;
-    background: linear-gradient(90deg, #ffd700, #ffaa00);
-    color: #1a0d00;
-    font-size: 12px;
-    font-weight: 700;
-    padding: 4px 14px;
-    border-radius: 20px;
-    letter-spacing: 2px;
-    margin-bottom: 12px;
-  }
-  .header h1 {
-    font-size: clamp(22px, 4vw, 38px);
-    font-weight: 900;
-    background: linear-gradient(90deg, #ffd700, #fff 50%, #a8d8ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1.2;
-    margin-bottom: 8px;
-    text-shadow: none;
-  }
-  .header .subtitle {
-    font-size: 14px;
-    color: rgba(255,255,255,0.6);
-    letter-spacing: 1px;
-  }
+/* ===== 顶部 ===== */
+.hero {
+  position: relative; z-index:10;
+  text-align: center;
+  padding: 44px 24px 0;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: linear-gradient(90deg,#ffd70022,#ffd70044);
+  border: 1px solid #ffd70055;
+  border-radius: 20px; padding: 5px 16px;
+  font-size: 12px; letter-spacing: 2px; color: #ffd700;
+  margin-bottom: 14px;
+}
+.hero-title {
+  font-size: clamp(26px,4.5vw,48px);
+  font-weight: 900; line-height: 1.15;
+  background: linear-gradient(135deg,#ffd700 0%,#fff 45%,#a8d8ff 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-sub {
+  margin-top: 8px; font-size: 13px;
+  color: rgba(255,255,255,0.5); letter-spacing: 1px;
+}
 
-  /* 主流程箭头 */
-  .flow-bar {
-    position: relative;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-    padding: 20px 20px 0;
-    flex-wrap: wrap;
-  }
-  .flow-step {
-    display: flex;
-    align-items: center;
-    gap: 0;
-  }
-  .flow-node {
-    background: linear-gradient(135deg, #1e3a8a, #2563eb);
-    border: 2px solid rgba(147, 197, 253, 0.5);
-    border-radius: 30px;
-    padding: 8px 18px;
-    font-size: 13px;
-    font-weight: 700;
-    color: #bfdbfe;
-    white-space: nowrap;
-    box-shadow: 0 0 20px rgba(37,99,235,0.4);
-    cursor: default;
-  }
-  .flow-arrow {
-    color: #ffd700;
-    font-size: 20px;
-    padding: 0 6px;
-    font-weight: 900;
-  }
+/* ===== 数据背景条 ===== */
+.data-bar {
+  position: relative; z-index:10;
+  display: flex; justify-content: center; gap: 0;
+  flex-wrap: wrap;
+  padding: 20px 24px 0;
+  max-width: 900px; margin: 0 auto;
+}
+.data-item {
+  flex: 1; min-width: 160px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 14px 16px;
+  text-align: center;
+}
+.data-item:first-child { border-radius: 12px 0 0 12px; }
+.data-item:last-child { border-radius: 0 12px 12px 0; }
+.data-num { font-size: 22px; font-weight: 900; color: #ffd700; }
+.data-num.down { color: #f87171; }
+.data-label { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 3px; }
 
-  /* 四列主卡片区 */
-  .phases {
-    position: relative;
-    z-index: 10;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    padding: 24px 24px 40px;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
+/* ===== 目标区 ===== */
+.goals {
+  position: relative; z-index:10;
+  max-width: 1100px; margin: 28px auto 0;
+  padding: 0 24px;
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 12px;
+}
+@media(max-width:700px){ .goals{ grid-template-columns:1fr; } }
+.goal-card {
+  background: linear-gradient(135deg, rgba(37,99,235,0.15), rgba(37,99,235,0.05));
+  border: 1px solid rgba(59,130,246,0.3);
+  border-radius: 14px; padding: 16px;
+}
+.goal-label {
+  font-size: 11px; font-weight: 700; color: #60a5fa;
+  letter-spacing: 1px; margin-bottom: 6px;
+  display: flex; align-items: center; gap: 6px;
+}
+.goal-title { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+.goal-kr { font-size: 11.5px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+.goal-kr b { color: #93c5fd; }
 
-  @media (max-width: 900px) {
-    .phases { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 540px) {
-    .phases { grid-template-columns: 1fr; }
-  }
+/* ===== 主流程箭头 ===== */
+.flow-wrap {
+  position: relative; z-index:10;
+  display: flex; align-items: center; justify-content: center;
+  gap: 0; padding: 32px 24px 0;
+  flex-wrap: wrap;
+}
+.flow-pill {
+  background: linear-gradient(135deg,#1e3a8a,#1d4ed8);
+  border: 2px solid rgba(96,165,250,0.4);
+  border-radius: 32px; padding: 10px 22px;
+  font-size: 14px; font-weight: 800; color: #bfdbfe;
+  white-space: nowrap;
+  box-shadow: 0 0 24px rgba(29,78,216,0.5);
+  transition: transform .2s;
+}
+.flow-pill:hover { transform: scale(1.05); }
+.flow-arrow { color: #ffd700; font-size: 22px; padding: 0 6px; font-weight: 900; }
 
-  /* 阶段卡片 */
-  .phase-card {
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1.5px solid rgba(255,255,255,0.1);
-    transition: transform 0.25s, box-shadow 0.25s;
-    cursor: default;
-  }
-  .phase-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-  }
+/* ===== 三大步骤区 ===== */
+.steps {
+  position: relative; z-index:10;
+  max-width: 1300px; margin: 0 auto;
+  padding: 24px 20px 40px;
+  display: flex; flex-direction: column; gap: 24px;
+}
 
-  /* 阶段1 招生 - 橙金 */
-  .phase-1 { background: linear-gradient(160deg, #2d1a00, #4a2c00); }
-  .phase-1 .phase-header { background: linear-gradient(90deg, #f97316, #fbbf24); }
-  .phase-1 .tag { background: rgba(249,115,22,0.3); color: #fed7aa; border-color: rgba(249,115,22,0.4); }
-  .phase-1 .section-title { color: #fbbf24; }
+/* 步骤容器 */
+.step-block {
+  border-radius: 20px; overflow: hidden;
+  border: 1.5px solid rgba(255,255,255,0.08);
+}
 
-  /* 阶段2 研习 - 蓝绿 */
-  .phase-2 { background: linear-gradient(160deg, #001a2d, #002d4a); }
-  .phase-2 .phase-header { background: linear-gradient(90deg, #0ea5e9, #22d3ee); }
-  .phase-2 .tag { background: rgba(14,165,233,0.3); color: #bae6fd; border-color: rgba(14,165,233,0.4); }
-  .phase-2 .section-title { color: #22d3ee; }
+/* 步骤头部 */
+.step-header {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px 22px;
+}
+.step-num {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 900; flex-shrink: 0;
+}
+.step-title { font-size: 18px; font-weight: 900; }
+.step-desc { font-size: 12px; opacity: .7; margin-top: 2px; }
+.step-icon { margin-left: auto; font-size: 28px; }
 
-  /* 阶段3 考试 - 紫 */
-  .phase-3 { background: linear-gradient(160deg, #1a0030, #2d004a); }
-  .phase-3 .phase-header { background: linear-gradient(90deg, #7c3aed, #a855f7); }
-  .phase-3 .tag { background: rgba(124,58,237,0.3); color: #e9d5ff; border-color: rgba(124,58,237,0.4); }
-  .phase-3 .section-title { color: #c084fc; }
+/* Step1 招生 - 橙金 */
+.step-1 { background: linear-gradient(160deg,#1c0f00,#2d1800); }
+.step-1 .step-header { background: linear-gradient(90deg,#c2410c,#f97316); }
+.step-1 .tag { background: rgba(249,115,22,.2); color:#fed7aa; border-color:rgba(249,115,22,.4); }
+.step-1 .sec-title { color: #fb923c; }
+.step-1 .pill-accent { background: rgba(249,115,22,.15); border-color: rgba(249,115,22,.3); color:#fdba74; }
 
-  /* 阶段4 学位 - 金绿 */
-  .phase-4 { background: linear-gradient(160deg, #001a10, #002d1a); }
-  .phase-4 .phase-header { background: linear-gradient(90deg, #16a34a, #4ade80); }
-  .phase-4 .tag { background: rgba(22,163,74,0.3); color: #bbf7d0; border-color: rgba(22,163,74,0.4); }
-  .phase-4 .section-title { color: #4ade80; }
+/* Step2 研习+考试 - 蓝青 */
+.step-2 { background: linear-gradient(160deg,#001830,#001f3f); }
+.step-2 .step-header { background: linear-gradient(90deg,#0369a1,#0ea5e9); }
+.step-2 .tag { background: rgba(14,165,233,.2); color:#bae6fd; border-color:rgba(14,165,233,.4); }
+.step-2 .sec-title { color: #38bdf8; }
+.step-2 .pill-accent { background: rgba(14,165,233,.15); border-color: rgba(14,165,233,.3); color:#7dd3fc; }
 
-  .phase-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 14px 18px;
-  }
-  .phase-num {
-    width: 28px; height: 28px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.25);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 13px; font-weight: 900; color: #fff;
-    flex-shrink: 0;
-  }
-  .phase-title {
-    font-size: 16px;
-    font-weight: 800;
-    color: #fff;
-  }
-  .phase-icon {
-    margin-left: auto;
-    font-size: 22px;
-  }
+/* Step3 典礼 - 紫金 */
+.step-3 { background: linear-gradient(160deg,#130025,#1e0038); }
+.step-3 .step-header { background: linear-gradient(90deg,#6d28d9,#a855f7); }
+.step-3 .tag { background: rgba(168,85,247,.2); color:#e9d5ff; border-color:rgba(168,85,247,.4); }
+.step-3 .sec-title { color: #c084fc; }
+.step-3 .pill-accent { background: rgba(168,85,247,.15); border-color: rgba(168,85,247,.3); color:#d8b4fe; }
 
-  .phase-body {
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
+/* 步骤内容体 */
+.step-body {
+  padding: 20px;
+  display: grid; gap: 14px;
+}
+.step-body.cols-3 { grid-template-columns: repeat(3,1fr); }
+.step-body.cols-4 { grid-template-columns: repeat(4,1fr); }
+.step-body.cols-2 { grid-template-columns: repeat(2,1fr); }
 
-  .section {
-    background: rgba(255,255,255,0.05);
-    border-radius: 12px;
-    padding: 12px 14px;
-    border: 1px solid rgba(255,255,255,0.08);
-  }
-  .section-title {
-    font-size: 13px;
-    font-weight: 700;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .section-title::before {
-    content: '';
-    display: inline-block;
-    width: 3px; height: 12px;
-    border-radius: 2px;
-    background: currentColor;
-    flex-shrink: 0;
-  }
+@media(max-width:900px){
+  .step-body.cols-3, .step-body.cols-4 { grid-template-columns: repeat(2,1fr); }
+}
+@media(max-width:540px){
+  .step-body.cols-3, .step-body.cols-4, .step-body.cols-2 { grid-template-columns: 1fr; }
+}
 
-  .item-list {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .item {
-    font-size: 12px;
-    color: rgba(255,255,255,0.8);
-    line-height: 1.5;
-    padding-left: 12px;
-    position: relative;
-  }
-  .item::before {
-    content: '·';
-    position: absolute;
-    left: 2px;
-    color: rgba(255,255,255,0.4);
-  }
-  .item .sub {
-    color: rgba(255,255,255,0.5);
-    font-size: 11px;
-    display: block;
-    padding-left: 8px;
-    margin-top: 2px;
-  }
+/* 小卡片 */
+.card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px; padding: 14px 15px;
+  display: flex; flex-direction: column; gap: 8px;
+  transition: transform .2s, box-shadow .2s;
+}
+.card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,.4); }
 
-  /* 标签 */
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 6px;
-  }
-  .tag {
-    font-size: 11px;
-    padding: 3px 9px;
-    border-radius: 20px;
-    border: 1px solid;
-    font-weight: 600;
-  }
+.sec-title {
+  font-size: 13px; font-weight: 800;
+  display: flex; align-items: center; gap: 6px;
+  margin-bottom: 2px;
+}
+.sec-title .icon { font-size: 16px; }
 
-  /* 亮点高亮条 */
-  .highlight {
-    background: rgba(255, 213, 0, 0.1);
-    border-left: 3px solid #ffd700;
-    border-radius: 0 8px 8px 0;
-    padding: 8px 10px;
-    font-size: 11.5px;
-    color: #fde68a;
-    line-height: 1.5;
-    margin-top: 2px;
-  }
+.items { display: flex; flex-direction: column; gap: 5px; }
+.it {
+  font-size: 12px; color: rgba(255,255,255,.75);
+  line-height: 1.55; padding-left: 12px; position: relative;
+}
+.it::before { content:'·'; position:absolute; left:2px; color:rgba(255,255,255,.35); }
+.it .sub { display:block; padding-left:8px; font-size:11px; color:rgba(255,255,255,.45); margin-top:1px; }
 
-  /* 底部说明 */
-  .footer {
-    position: relative;
-    z-index: 10;
-    text-align: center;
-    padding: 0 20px 40px;
-  }
-  .footer-inner {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 16px;
-    padding: 10px 20px;
-    font-size: 12px;
-    color: rgba(255,255,255,0.5);
-  }
-  .footer-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: #ffd700;
-    animation: pulse 2s ease-in-out infinite;
-  }
-  @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+/* 标签组 */
+.tags { display:flex; flex-wrap:wrap; gap:5px; margin-top:4px; }
+.tag {
+  font-size: 11px; padding: 2px 9px; border-radius: 20px;
+  border: 1px solid; font-weight: 600;
+}
+
+/* 积分任务表格样式卡 */
+.task-table-wrap {
+  grid-column: 1 / -1;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px; overflow: hidden;
+}
+.task-table-title {
+  padding: 12px 16px;
+  font-size: 13px; font-weight: 800; color: #38bdf8;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  display: flex; align-items: center; gap: 6px;
+}
+.task-table {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 0;
+}
+@media(max-width:700px){ .task-table{ grid-template-columns: repeat(2,1fr); } }
+.task-col {
+  padding: 12px 14px;
+  border-right: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.task-col:last-child { border-right: none; }
+.task-col-head {
+  font-size: 12px; font-weight: 800; color: #7dd3fc;
+  margin-bottom: 6px; display: flex; align-items: center; gap: 5px;
+}
+.task-col-body { font-size: 11px; color: rgba(255,255,255,.6); line-height: 1.6; }
+.task-col-action {
+  margin-top: 6px; font-size: 11px;
+  color: #38bdf8; font-weight: 600;
+}
+
+/* 高亮条 */
+.hl {
+  grid-column: 1 / -1;
+  background: rgba(255,213,0,0.07);
+  border-left: 3px solid #ffd700;
+  border-radius: 0 10px 10px 0;
+  padding: 10px 14px;
+  font-size: 12px; color: #fde68a; line-height: 1.6;
+}
+
+/* 分数段卡 */
+.score-row {
+  display: flex; flex-direction: column; gap: 4px; margin-top: 4px;
+}
+.score-item {
+  font-size: 11.5px; padding: 6px 10px; border-radius: 8px;
+  background: rgba(255,255,255,.05); line-height: 1.45;
+}
+.score-item b { color: #c084fc; margin-right: 4px; }
+
+/* ===== 底部 ===== */
+.footer {
+  position: relative; z-index:10;
+  text-align: center; padding: 0 20px 48px;
+}
+.footer-inner {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 20px; padding: 12px 24px;
+  font-size: 12px; color: rgba(255,255,255,.45);
+}
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.2;} }
+.dot { width:7px;height:7px;border-radius:50%;background:#ffd700;animation:blink 2s infinite; }
 </style>
 </head>
 <body>
 
-<!-- 星空 -->
-<div class="stars" id="stars"></div>
+<canvas id="stars-canvas"></canvas>
 
-<!-- 标题 -->
-<div class="header">
-  <div class="badge">🎓 洛克王国 × 小红书 独家活动</div>
-  <h1>精灵研究生院</h1>
-  <div class="subtitle">任务学分获得制 · 四阶段完整用户旅程</div>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">🎓 洛克王国 × 小红书 独家大事件</div>
+  <div class="hero-title">洛克王国精灵研究生院</div>
+  <div class="hero-sub">学分累计制 · 线上×线下全贯通 · 精灵生态差异化心智打造</div>
+</div>
+
+<!-- 数据背景 -->
+<div style="position:relative;z-index:10;text-align:center;padding:20px 24px 0;font-size:11px;color:rgba(255,255,255,.35);letter-spacing:1px;">— 为什么做？数据洞察 —</div>
+<div class="data-bar">
+  <div class="data-item">
+    <div class="data-num down">137.2万</div>
+    <div class="data-label">6月日均DAU（MoM -25.4%）</div>
+  </div>
+  <div class="data-item">
+    <div class="data-num" style="color:#34d399;">11.81%</div>
+    <div class="data-label">精灵生态中视频万赞率 #1</div>
+  </div>
+  <div class="data-item">
+    <div class="data-num" style="color:#34d399;">538.4‰</div>
+    <div class="data-label">精灵生态阅读→点赞转化率</div>
+  </div>
+  <div class="data-item">
+    <div class="data-num" style="color:#34d399;">+4.92pp</div>
+    <div class="data-label">精灵生态内容占比增长</div>
+  </div>
+</div>
+
+<!-- 活动目标 -->
+<div style="position:relative;z-index:10;text-align:center;padding:24px 24px 0;font-size:11px;color:rgba(255,255,255,.35);letter-spacing:1px;">— 活动目标 —</div>
+<div class="goals">
+  <div class="goal-card">
+    <div class="goal-label">🎯 O1 · DAU目标</div>
+    <div class="goal-title">合作游戏DAU +20%</div>
+    <div class="goal-kr">
+      <b>KR1</b> 万赞视频累计 <b>450条</b>（同比+28%）<br>
+      百CES中视频 <b>15万篇</b>（同比+27%）<br>
+      <span style="color:rgba(255,255,255,.4);">benchmark: S2万赞350条 / 11.8万篇</span>
+    </div>
+  </div>
+  <div class="goal-card">
+    <div class="goal-label">🌟 O1 · 创作者目标</div>
+    <div class="goal-title">创作者生态扩大</div>
+    <div class="goal-kr">
+      <b>KR2</b> 标杆储备作者重点孵化 x+<br>
+      万粉作者活动发文 x+
+    </div>
+  </div>
+  <div class="goal-card">
+    <div class="goal-label">📊 O1 · 规模目标</div>
+    <div class="goal-title">话题内容破圈</div>
+    <div class="goal-kr">
+      <b>KR3</b> 活动期话题视频投稿 <b>100万条</b><br>
+      视频阅读 <b>15亿</b><br>
+      <span style="color:rgba(255,255,255,.4);">benchmark: S2 74.27万条 / 11.66亿阅读</span>
+    </div>
+  </div>
 </div>
 
 <!-- 主流程 -->
-<div class="flow-bar">
-  <div class="flow-step">
-    <div class="flow-node">🏫 学院招生</div>
-    <div class="flow-arrow">››</div>
-  </div>
-  <div class="flow-step">
-    <div class="flow-node">📚 入学研习</div>
-    <div class="flow-arrow">››</div>
-  </div>
-  <div class="flow-step">
-    <div class="flow-node">📝 学位考试</div>
-    <div class="flow-arrow">››</div>
-  </div>
-  <div class="flow-step">
-    <div class="flow-node">🎓 学位获得</div>
-  </div>
+<div style="position:relative;z-index:10;text-align:center;padding:28px 24px 0;font-size:11px;color:rgba(255,255,255,.35);letter-spacing:1px;">— 活动主流程 —</div>
+<div class="flow-wrap">
+  <div class="flow-pill">🏫 STEP 1<br><span style="font-size:11px;font-weight:400;">学院招生</span></div>
+  <div class="flow-arrow">›</div>
+  <div class="flow-pill">📚 STEP 2<br><span style="font-size:11px;font-weight:400;">入学研习 & 考试</span></div>
+  <div class="flow-arrow">›</div>
+  <div class="flow-pill">🎓 STEP 3<br><span style="font-size:11px;font-weight:400;">学位典礼（REDLAND）</span></div>
 </div>
 
-<!-- 四列内容 -->
-<div class="phases">
+<!-- 三大步骤 -->
+<div class="steps">
 
-  <!-- 阶段1：学院招生 -->
-  <div class="phase-card phase-1">
-    <div class="phase-header">
-      <div class="phase-num">01</div>
-      <div class="phase-title">学院招生</div>
-      <div class="phase-icon">🏫</div>
+  <!-- ===== STEP 1 ===== -->
+  <div class="step-block step-1">
+    <div class="step-header">
+      <div class="step-num">01</div>
+      <div>
+        <div class="step-title">学院招生</div>
+        <div class="step-desc">招生简章 · 师兄师姐 · 三大方向 · 八大派系</div>
+      </div>
+      <div class="step-icon">🏫</div>
     </div>
-    <div class="phase-body">
+    <div class="step-body cols-3">
 
-      <div class="section">
-        <div class="section-title">招生简章发布</div>
-        <div class="item-list">
-          <div class="item">洛克王国 × 游戏薯 共创发布
-            <span class="sub">「精灵研究生院」官方招生简章</span>
+      <div class="card">
+        <div class="sec-title"><span class="icon">📋</span>招生简章联合发布</div>
+        <div class="items">
+          <div class="it">洛克王国 × 游戏薯 共创发布
+            <span class="sub">「2026年 洛克王国精灵学院 红薯研究生院招生简章」</span>
           </div>
-          <div class="item">发布笔记即入学
-            <span class="sub">入学即送 独家游戏道具</span>
-          </div>
+          <div class="it">共宣独家大事件</div>
+          <div class="it">入学（发布笔记）即送独家道具</div>
         </div>
         <div class="tags">
-          <span class="tag">三大研究方向</span>
-          <span class="tag">八大属性</span>
-          <span class="tag">带教导师</span>
+          <span class="tag">精灵学概论</span>
+          <span class="tag">精灵学美育</span>
+          <span class="tag">精灵学实务</span>
         </div>
       </div>
 
-      <div class="section">
-        <div class="section-title">师兄师姐入学体验</div>
-        <div class="item-list">
-          <div class="item">各方向生态作者约稿</div>
-          <div class="item">分享研究院入学心得 / Vlog</div>
-          <div class="item">招揽同门学弟妹</div>
+      <div class="card">
+        <div class="sec-title"><span class="icon">🎥</span>师兄师姐入学体验 Vlog</div>
+        <div class="items">
+          <div class="it">各方向生态作者约稿</div>
+          <div class="it">分享研究院入学心得</div>
+          <div class="it">招揽同门学弟妹，扩大声量</div>
         </div>
       </div>
 
-      <div class="highlight">
-        ⚡ 官方+达人双线引流，降低用户入场门槛
+      <div class="card">
+        <div class="sec-title"><span class="icon">🔬</span>三大招生研究方向</div>
+        <div class="items">
+          <div class="it"><b style="color:#fb923c;">精灵学概论</b> 介绍精灵/萌点/冷知识/世界观
+            <span class="sub">带教导师：性感松鼠、洛克小饭糖</span>
+          </div>
+          <div class="it"><b style="color:#fb923c;">精灵学美育</b> 精灵同人/二创/手书/剧场
+            <span class="sub">带教导师：甘乐能、猫老大</span>
+          </div>
+          <div class="it"><b style="color:#fb923c;">精灵学实务</b> 精灵实战攻略/技巧/教程
+            <span class="sub">带教导师：洛克教官（洛克王国世界）</span>
+          </div>
+        </div>
       </div>
+
+      <div class="card" style="grid-column: 1 / -1">
+        <div class="sec-title"><span class="icon">🛡️</span>八大精灵派系应援 · 数据话题排行</div>
+        <div class="items">
+          <div class="it">发布带派系话题笔记，数据统计排行</div>
+          <div class="it">排名第一派系解锁：线下精灵特展 / 游戏内派系道馆徽章</div>
+        </div>
+        <div class="tags" style="margin-top:6px;">
+          <span class="tag">🌿草系</span><span class="tag">💧水系</span><span class="tag">🪨岩系</span>
+          <span class="tag">🔥火系</span><span class="tag">❄️冰系</span><span class="tag">⚡电系</span>
+          <span class="tag">🌬️翼系</span><span class="tag">💀幽系</span>
+        </div>
+      </div>
+
     </div>
   </div>
 
-  <!-- 阶段2：入学研习 -->
-  <div class="phase-card phase-2">
-    <div class="phase-header">
-      <div class="phase-num">02</div>
-      <div class="phase-title">入学研习</div>
-      <div class="phase-icon">📚</div>
+  <!-- ===== STEP 2 ===== -->
+  <div class="step-block step-2">
+    <div class="step-header">
+      <div class="step-num">02</div>
+      <div>
+        <div class="step-title">入学研习 & 学位考试</div>
+        <div class="step-desc">学分制 UGC 活动 · 五大任务环节 · 里程碑中心化串联</div>
+      </div>
+      <div class="step-icon">📚</div>
     </div>
-    <div class="phase-body">
+    <div class="step-body cols-2">
 
-      <div class="section">
-        <div class="section-title">八大派系精灵应援</div>
-        <div class="item-list">
-          <div class="item">洛克测试问答
-            <span class="sub">「你是哪只洛克精灵？」</span>
+      <!-- 学分任务总览 -->
+      <div class="task-table-wrap" style="grid-column:1/-1;">
+        <div class="task-table-title">🏅 学分任务体系（里程碑中心化串联 → 学分达标解锁线下拨穗仪式）</div>
+        <div class="task-table">
+          <div class="task-col">
+            <div class="task-col-head">🔍 选择研究派系</div>
+            <div class="task-col-body">完成 H5 测试问答<br>长期在线</div>
+            <div class="task-col-action">→ 完成派系测试</div>
           </div>
-          <div class="item">引导用户加入属性派系</div>
-          <div class="item">精灵属性话题数据排行</div>
-          <div class="item">为喜爱精灵打 call 助力登顶
-            <span class="sub">解锁线下派系特展 / 游戏内下一个徽章</span>
+          <div class="task-col">
+            <div class="task-col-head">📖 研习教材课程</div>
+            <div class="task-col-body">观看并点赞指定笔记<br>#洛克王国红薯研究生院</div>
+            <div class="task-col-action">→ 点赞指定笔记</div>
           </div>
-        </div>
-      </div>
-
-      <div class="section">
-        <div class="section-title">教材研习 & 研究成果</div>
-        <div class="item-list">
-          <div class="item">作者按周期约稿：教材研习内容</div>
-          <div class="item">UGC 激励活动：发布研究成果笔记</div>
-        </div>
-      </div>
-
-      <div class="section">
-        <div class="section-title">红薯研究生院表白墙</div>
-        <div class="item-list">
-          <div class="item">洛克表白精灵
-            <span class="sub">「借楼，我的本命精灵是xxx」</span>
+          <div class="task-col">
+            <div class="task-col-head">✍️ 发布研究成果</div>
+            <div class="task-col-body">发布三大方向 UGC 话题笔记<br>#洛克王国红薯研究生院</div>
+            <div class="task-col-action">→ 发笔记 = 发成果</div>
           </div>
-          <div class="item">精灵表白主人
-            <span class="sub">「我是一只水系精灵...我的主人...」</span>
+          <div class="task-col">
+            <div class="task-col-head">📝 共创学位试卷</div>
+            <div class="task-col-body">投稿问卷题目<br>官方+用户+作者三方共创<br>*长期在线</div>
+            <div class="task-col-action">→ 提交出题问卷</div>
+          </div>
+          <div class="task-col" style="border-right:none;">
+            <div class="task-col-head">🎓 完成毕业考试</div>
+            <div class="task-col-body">答题后分享成绩<br>艾特@洛克王国世界<br>*活动最后一周上线</div>
+            <div class="task-col-action">→ 答题+晒分</div>
           </div>
         </div>
       </div>
 
-      <div class="highlight">
-        ⚡ 测试+互动+UGC三重机制，持续产出内容
+      <div class="card">
+        <div class="sec-title"><span class="icon">🧪</span>派系测试 H5</div>
+        <div class="items">
+          <div class="it">厂商根据精灵特性设计测试问卷</div>
+          <div class="it">8大精灵派系分别生成专属结果页</div>
+          <div class="it">结果页引导发布本命精灵应援笔记</div>
+        </div>
+        <div class="tags">
+          <span class="tag">#我的本命精灵派系</span>
+          <span class="tag">#洛克水系精灵</span>
+        </div>
       </div>
+
+      <div class="card">
+        <div class="sec-title"><span class="icon">📚</span>教材研习 · 导师约稿</div>
+        <div class="items">
+          <div class="it">生态作者作为「研究生院导师」按周期编纂教材</div>
+          <div class="it">活动页分 tab 承接三大方向教材</div>
+          <div class="it">教材引领 UGC 创作方向</div>
+        </div>
+        <div class="tags">
+          <span class="tag">精灵学概论</span>
+          <span class="tag">精灵学美育</span>
+          <span class="tag">精灵学实务</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="sec-title"><span class="icon">💌</span>红薯研究生院表白墙</div>
+        <div class="items">
+          <div class="it">流量券激励，长线经营 #洛克红薯研究生院表白墙</div>
+          <div class="it">精灵与洛克的互动实况</div>
+          <div class="it">洛克与精灵的「捞人文学」</div>
+          <div class="it">表白墙的「捡手机文学」</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="sec-title"><span class="icon">📝</span>学位考试 · 全民出卷</div>
+        <div class="items">
+          <div class="it">游戏侧与导师出压轴题</div>
+          <div class="it">全站洛克玩家征集题目，用户投稿共创试卷</div>
+          <div class="it">线上答题页标注「本题由 @xxx 投稿」</div>
+        </div>
+        <div class="score-row">
+          <div class="score-item"><b>100分</b>「或许你想留校任教吗」</div>
+          <div class="score-item"><b>≥90分</b>「已掌握精灵学核心命题，可以毕业了」</div>
+          <div class="score-item"><b>≥60分</b>「研究方向正确，仍有知识盲区」</div>
+          <div class="score-item"><b>&lt;60分</b>「建议重新入学」</div>
+        </div>
+      </div>
+
+      <div class="hl">
+        ⚡ 核心逻辑：将 UGC 活动参与过程包装成「学分获得」课程 → 里程碑任务中心化串联 → 分阶段释放活动页模块 → 学分达标解锁线下拨穗仪式
+      </div>
+
     </div>
   </div>
 
-  <!-- 阶段3：学位考试 -->
-  <div class="phase-card phase-3">
-    <div class="phase-header">
-      <div class="phase-num">03</div>
-      <div class="phase-title">学位考试</div>
-      <div class="phase-icon">📝</div>
+  <!-- ===== STEP 3 ===== -->
+  <div class="step-block step-3">
+    <div class="step-header">
+      <div class="step-num">03</div>
+      <div>
+        <div class="step-title">学位仪式 · 升学典礼</div>
+        <div class="step-desc">结合 10 月 REDLAND 展台 · 线上→线下完整闭环</div>
+      </div>
+      <div class="step-icon">🎓</div>
     </div>
-    <div class="phase-body">
+    <div class="step-body cols-4">
 
-      <div class="section">
-        <div class="section-title">全民出卷</div>
-        <div class="item-list">
-          <div class="item">游戏侧与导师出压轴题</div>
-          <div class="item">全站洛克玩家征集
-            <span class="sub">共创毕业考试试卷</span>
-          </div>
+      <div class="card">
+        <div class="sec-title"><span class="icon">🏛️</span>精灵特展</div>
+        <div class="items">
+          <div class="it">线上话题数据排名 #1 的派系精灵</div>
+          <div class="it">在 REDLAND 开辟线下精灵特展 / 道馆挑战</div>
+          <div class="it">现场互动可获得该派系精灵徽章</div>
         </div>
-        <div class="highlight" style="margin-top:8px;">
-          📌 UGC 活动尾声阶段释放，收尾造势
+        <div class="tags"><span class="tag">线上投票决定</span><span class="tag">线下实体特展</span></div>
+      </div>
+
+      <div class="card">
+        <div class="sec-title"><span class="icon">🎤</span>导师公开课</div>
+        <div class="items">
+          <div class="it">学位试卷易错题独家讲解</div>
+          <div class="it">精灵冷知识小讲堂</div>
+          <div class="it">讲堂内容同步作为精灵捕获点 NPC 答题彩蛋</div>
         </div>
+        <div class="tags"><span class="tag">Coser 扮演</span><span class="tag">展位现场</span></div>
       </div>
 
-      <div class="section">
-        <div class="section-title">考试流程</div>
-        <div class="item-list">
-          <div class="item">完成测试试卷答题</div>
-          <div class="item">得分结果分享
-            <span class="sub">晒分笔记引发二次传播</span>
-          </div>
-          <div class="item">高分 / 满分奖励
-            <span class="sub">游戏周边实物奖励</span>
-          </div>
+      <div class="card">
+        <div class="sec-title"><span class="icon">👑</span>拨穗仪式</div>
+        <div class="items">
+          <div class="it">Coser 高 KA 扮演精灵研究员</div>
+          <div class="it">为用户一对一拨穗并颁发学位证书</div>
+          <div class="it">用户须出示活动页「学分修满凭证」</div>
         </div>
+        <div class="tags"><span class="tag">🌟 高 KA 核心环节</span><span class="tag">学位证书周边</span></div>
       </div>
 
-      <div class="highlight">
-        ⚡ 考试天然具备「分享欲」，低门槛裂变传播
-      </div>
-    </div>
-  </div>
-
-  <!-- 阶段4：学位获得 -->
-  <div class="phase-card phase-4">
-    <div class="phase-header">
-      <div class="phase-num">04</div>
-      <div class="phase-title">学位获得</div>
-      <div class="phase-icon">🎓</div>
-    </div>
-    <div class="phase-body">
-
-      <div class="section">
-        <div class="section-title">毕业证书周边</div>
-        <div class="item-list">
-          <div class="item">获得硕士学位证书实体周边</div>
-          <div class="item">洛克王国新生入学通知书礼盒</div>
+      <div class="card">
+        <div class="sec-title"><span class="icon">🗺️</span>精灵抓捕彩蛋</div>
+        <div class="items">
+          <div class="it">REDLAND 展位发放「精灵捕获点位」地图</div>
+          <div class="it">点位 Coser NPC 互动答题（与公开课内容关联）</div>
+          <div class="it">答对得卡片，集齐 N 张兑换精灵周边</div>
         </div>
+        <div class="tags"><span class="tag">探索地图</span><span class="tag">NPC 答题</span><span class="tag">集卡兑换</span></div>
       </div>
 
-      <div class="section">
-        <div class="section-title">学位授予典礼</div>
-        <div class="item-list">
-          <div class="item">结合 REDLAND 线下活动</div>
-          <div class="item" style="color:#86efac; font-weight:600;">🌟 线下拨穗仪式（高 KA 环节）</div>
-          <div class="item">累计足够学分解锁资格
-            <span class="sub">完成前述所有任务获取学分</span>
-          </div>
-        </div>
+      <div class="hl" style="grid-column:1/-1;">
+        ⚡ 精灵特展 / 导师公开课 / 拨穗仪式 / 精灵抓捕 四线同步，将线上内容生态引流至 REDLAND 线下阵地，实现用户全旅程闭环
       </div>
 
-      <div class="highlight">
-        ⚡ 线上-线下全贯通，REDLAND 强结合，给核心用户最高荣誉感
-      </div>
     </div>
   </div>
 
@@ -498,30 +589,39 @@
 <!-- 底部 -->
 <div class="footer">
   <div class="footer-inner">
-    <div class="footer-dot"></div>
-    <span>核心逻辑：任务学分制 · 笔记发布即参与 · UGC × 达人 × 官方三线联动</span>
-    <div class="footer-dot"></div>
+    <div class="dot"></div>
+    <span>核心心智：精灵生态差异化 · 学分任务制 · 官方 × 达人 × UGC 三线联动 · REDLAND 线下收口</span>
+    <div class="dot"></div>
   </div>
 </div>
 
 <script>
-// 生成星空
-const starsEl = document.getElementById('stars');
-for (let i = 0; i < 120; i++) {
-  const s = document.createElement('div');
-  s.className = 'star';
-  const size = Math.random() * 2.5 + 0.5;
-  s.style.cssText = `
-    left: ${Math.random()*100}%;
-    top: ${Math.random()*100}%;
-    width: ${size}px;
-    height: ${size}px;
-    --d: ${(Math.random()*3+2).toFixed(1)}s;
-    animation-delay: ${(Math.random()*4).toFixed(1)}s;
-    opacity: ${Math.random()*0.5+0.1};
-  `;
-  starsEl.appendChild(s);
+// 星空
+const c = document.getElementById('stars-canvas');
+const ctx = c.getContext('2d');
+function resize(){ c.width = window.innerWidth; c.height = window.innerHeight; }
+resize();
+window.addEventListener('resize', resize);
+const stars = Array.from({length:150},()=>({
+  x: Math.random(), y: Math.random(),
+  r: Math.random()*1.5+.3,
+  o: Math.random()*.6+.1,
+  sp: Math.random()*2+1.5
+}));
+let t=0;
+function draw(){
+  ctx.clearRect(0,0,c.width,c.height);
+  stars.forEach(s=>{
+    const op = s.o*(0.5+0.5*Math.sin(t/s.sp));
+    ctx.beginPath();
+    ctx.arc(s.x*c.width, s.y*c.height, s.r, 0, Math.PI*2);
+    ctx.fillStyle = `rgba(255,255,255,${op})`;
+    ctx.fill();
+  });
+  t+=0.04;
+  requestAnimationFrame(draw);
 }
+draw();
 </script>
 </body>
 </html>
