@@ -11,538 +11,272 @@ body {
   font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
   background: #f5f4f0;
   min-height: 100vh;
-  padding: 36px 28px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 32px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 900px;
 }
 
 /* 页面标题 */
-.page-title {
-  text-align: center;
-  margin-bottom: 28px;
-}
-.page-title h1 {
-  font-size: 20px;
-  font-weight: 900;
-  color: #111;
-  margin-bottom: 4px;
-}
-.page-title p {
-  font-size: 12px;
-  color: #999;
-  letter-spacing: 1px;
-}
-
-/* ========== 方案模块 ========== */
-.scheme {
-  margin-bottom: 28px;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1.5px solid rgba(0,0,0,0.08);
-}
-
-/* 方案标题行 */
-.scheme-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 20px;
-}
-.scheme-num {
-  font-size: 11px;
-  font-weight: 700;
-  opacity: .6;
-  letter-spacing: 1px;
-}
-.scheme-title {
-  font-size: 16px;
-  font-weight: 900;
-  flex: 1;
-}
-.scheme-subtitle {
-  font-size: 11px;
-  opacity: .65;
-}
-
-/* 方案1颜色 - 绿青 */
-.s1 .scheme-header { background: linear-gradient(90deg, #0d7a5f, #10b981); color: #fff; }
-.s1 .col-head { background: #ecfdf5; color: #065f46; border-color: #6ee7b7; }
-.s1 .leaf { border-color: #a7f3d0; }
-.s1 .leaf-icon { background: #d1fae5; color: #059669; }
-.s1 .tag { background: #d1fae5; color: #065f46; border-color: #6ee7b7; }
-.s1 { background: #f0fdf9; }
-
-/* 方案2颜色 - 蓝紫渐变组 */
-.s2 { background: #fafafa; }
-
-/* 内部列区域 */
-.scheme-body {
-  padding: 16px;
-}
-
-/* ========== 居民圈：三角色横排 ========== */
-.roles {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-bottom: 14px;
-}
-.role-card {
-  background: #fff;
-  border: 1.5px solid #a7f3d0;
-  border-radius: 12px;
-  padding: 12px 14px;
-}
-.role-name {
-  font-size: 12px;
-  font-weight: 800;
-  color: #065f46;
-  margin-bottom: 6px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-.role-desc {
-  font-size: 11px;
-  color: #555;
-  line-height: 1.55;
-}
-
-/* 居民圈 Tab 四列 */
-.tabs {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-}
-.tab-card {
-  background: #fff;
-  border: 1.5px solid #a7f3d0;
-  border-radius: 11px;
-  padding: 11px 12px;
-}
-.tab-title {
-  font-size: 12px;
-  font-weight: 800;
-  color: #065f46;
-  margin-bottom: 5px;
-}
-.tab-desc {
-  font-size: 11px;
-  color: #555;
-  line-height: 1.55;
-}
-.tab-example {
-  margin-top: 5px;
-  font-size: 10.5px;
-  color: #888;
-  font-style: italic;
-  background: #f0fdf9;
-  border-radius: 6px;
-  padding: 4px 7px;
-}
-
-/* ========== 研究生院：四步骤 ========== */
-.steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-}
-
-/* 各步骤配色 */
-.st1 .col-head { background: #fff7ed; color: #9a3412; border-color: #fdba74; }
-.st1 .leaf { border-color: #fed7aa; }
-.st1 .leaf-icon { background: #fff7ed; color: #ea580c; }
-.st1 .tag { background: #fff7ed; color: #9a3412; border-color: #fdba74; }
-
-.st2 .col-head { background: #eff6ff; color: #1e40af; border-color: #93c5fd; }
-.st2 .leaf { border-color: #bfdbfe; }
-.st2 .leaf-icon { background: #eff6ff; color: #2563eb; }
-.st2 .tag { background: #eff6ff; color: #1e40af; border-color: #93c5fd; }
-
-.st3 .col-head { background: #faf5ff; color: #581c87; border-color: #c084fc; }
-.st3 .leaf { border-color: #e9d5ff; }
-.st3 .leaf-icon { background: #faf5ff; color: #7c3aed; }
-.st3 .tag { background: #faf5ff; color: #581c87; border-color: #c084fc; }
-
-.st4 .col-head { background: #f0fdf4; color: #14532d; border-color: #86efac; }
-.st4 .leaf { border-color: #bbf7d0; }
-.st4 .leaf-icon { background: #f0fdf4; color: #16a34a; }
-.st4 .tag { background: #f0fdf4; color: #14532d; border-color: #86efac; }
-
-.step-col { display: flex; flex-direction: column; gap: 8px; }
-
-/* 列头 */
-.col-head {
-  border-radius: 10px;
-  border: 1.5px solid;
-  padding: 10px 12px;
-  text-align: center;
-}
-.col-step {
-  font-size: 10px;
-  font-weight: 700;
-  opacity: .6;
-  letter-spacing: 1px;
-  margin-bottom: 2px;
-}
-.col-title {
-  font-size: 14px;
-  font-weight: 900;
-}
-
-/* 子卡片 */
-.leaf {
-  background: #fff;
-  border: 1.5px solid;
-  border-radius: 9px;
-  padding: 10px 11px;
-  display: flex;
-  gap: 8px;
-  align-items: flex-start;
-}
-.leaf-icon {
-  width: 24px; height: 24px;
-  border-radius: 6px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 13px;
-  flex-shrink: 0;
-}
-.leaf-content { flex: 1; min-width: 0; }
-.leaf-title {
-  font-size: 12px;
-  font-weight: 700;
-  color: #111;
-  line-height: 1.35;
-  margin-bottom: 3px;
-}
-.leaf-desc {
-  font-size: 11px;
-  color: #666;
-  line-height: 1.5;
-}
-
-/* 标签 */
-.tags { display:flex; flex-wrap:wrap; gap:4px; margin-top:4px; }
-.tag {
-  font-size: 10px; padding: 2px 7px;
-  border-radius: 20px; border: 1px solid; font-weight: 600;
-}
-
-/* 重点标记 */
-.hl {
-  display: inline-block;
-  background: #fff740;
-  border-radius: 3px;
-  padding: 0 3px;
-}
-
-/* 考试分数 */
-.score-list { display: flex; flex-direction: column; gap: 3px; margin-top: 5px; }
-.score-item {
-  font-size: 10.5px;
-  padding: 4px 8px;
-  border-radius: 6px;
-  background: rgba(124,58,237,.06);
-  color: #4c1d95;
-  line-height: 1.4;
-}
-.score-item b { color: #7c3aed; margin-right: 3px; }
-
-/* 分隔线 */
-.divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #ddd, transparent);
-  margin: 20px 0 4px;
-}
-.divider-label {
-  text-align: center;
+.page-label {
   font-size: 11px;
   color: #aaa;
-  margin-bottom: 12px;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* 大方案标题框 */
+.main-title {
+  background: #1a1a1a;
+  color: #fff;
+  border-radius: 14px;
+  padding: 20px 32px;
+  text-align: center;
+  margin-bottom: 28px;
+}
+.main-title h1 {
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+.main-title p {
+  font-size: 12px;
+  opacity: .5;
   letter-spacing: 1px;
 }
 
-/* 响应式 */
-@media(max-width:900px){
-  .steps, .tabs, .roles { grid-template-columns: repeat(2,1fr); }
+/* 两模块并排 */
+.modules {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  gap: 0;
+  align-items: center;
+  margin-bottom: 28px;
 }
-@media(max-width:540px){
-  .steps, .tabs, .roles { grid-template-columns: 1fr; }
+
+/* 模块卡片 */
+.module {
+  border-radius: 14px;
+  padding: 22px 22px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.mod-1 {
+  background: #ecfdf5;
+  border: 2px solid #6ee7b7;
+}
+.mod-2 {
+  background: #ede9fe;
+  border: 2px solid #c4b5fd;
+}
+
+.mod-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  opacity: .6;
+}
+.mod-1 .mod-label { color: #059669; }
+.mod-2 .mod-label { color: #6d28d9; }
+
+.mod-title {
+  font-size: 16px;
+  font-weight: 900;
+  color: #111;
+  line-height: 1.3;
+}
+
+.mod-core {
+  font-size: 12px;
+  line-height: 1.65;
+  color: #444;
+}
+
+.mod-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 2px;
+}
+.tag {
+  font-size: 10.5px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+.mod-1 .tag { background: #d1fae5; color: #065f46; }
+.mod-2 .tag { background: #ddd6fe; color: #4c1d95; }
+
+/* 中间箭头/关系列 */
+.relation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 4px;
+}
+.rel-arrow {
+  font-size: 22px;
+  color: #bbb;
+}
+.rel-text {
+  font-size: 10px;
+  color: #aaa;
+  writing-mode: vertical-rl;
+  letter-spacing: 2px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* 关系说明区 */
+.relation-box {
+  background: #fff;
+  border: 1.5px solid #e5e5e5;
+  border-radius: 12px;
+  padding: 16px 22px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-bottom: 0;
+}
+.rel-item {
+  padding: 10px 16px;
+  text-align: center;
+  border-right: 1px solid #f0f0f0;
+}
+.rel-item:last-child { border-right: none; }
+.rel-icon { font-size: 18px; margin-bottom: 5px; }
+.rel-title {
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 3px;
+}
+.rel-desc {
+  font-size: 10.5px;
+  color: #888;
+  line-height: 1.55;
+}
+
+/* 底部闭环 */
+.loop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.loop-node {
+  background: #fff;
+  border: 1.5px solid #ddd;
+  border-radius: 30px;
+  padding: 8px 18px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #333;
+  white-space: nowrap;
+}
+.loop-arr {
+  color: #bbb;
+  font-size: 18px;
+  padding: 0 4px;
+  font-weight: 900;
+}
+.loop-node.highlight {
+  background: #1a1a1a;
+  color: #fff;
+  border-color: #1a1a1a;
 }
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<div class="page-title">
-  <h1>四、活动方案</h1>
-  <div style="display:inline-block;margin-top:10px;background:#1a1a1a;color:#fff;border-radius:12px;padding:12px 32px;">
-    <div style="font-size:11px;letter-spacing:2px;opacity:.55;margin-bottom:4px;">核心大方案</div>
-    <div style="font-size:18px;font-weight:900;letter-spacing:1px;">打造「洛克王国世界」的红薯原生生态</div>
-    <div style="font-size:11px;opacity:.55;margin-top:4px;">以居民圈为阵地承载沉浸式世界观 · 以研究学院为引擎驱动内容规模化产消</div>
+  <div class="page-label">四、活动方案</div>
+
+  <!-- 大方案总标题 -->
+  <div class="main-title">
+    <h1>打造「洛克王国世界」的红薯原生生态</h1>
+    <p>以世界观沉浸为基础 · 以内容激励为驱动 · 以线下典礼为收口</p>
   </div>
-  <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;font-size:12px;color:#888;">
-    <span style="background:#d1fae5;color:#065f46;border-radius:20px;padding:3px 12px;font-weight:700;">模块一 · 居民圈</span>
-    <span style="color:#bbb;">+</span>
-    <span style="background:#ede9fe;color:#4338ca;border-radius:20px;padding:3px 12px;font-weight:700;">模块二 · 红薯研究学院</span>
-    <span style="color:#bbb;margin-left:4px;">→ 线上内容生态 × 线下 REDLAND 完整闭环</span>
+
+  <!-- 两模块 -->
+  <div class="modules">
+
+    <!-- 模块一 -->
+    <div class="module mod-1">
+      <div class="mod-label">模块一 · 生态底座</div>
+      <div class="mod-title">洛克王国世界<br>居民圈</div>
+      <div class="mod-core">以游戏真实地图为舞台，搭建红薯原生社区阵地。玩家不讨论游戏，而是以「原住民」身份活在洛克世界里，持续产出世界观沉浸内容。</div>
+      <div class="mod-tags">
+        <span class="tag">官号 · 驿站管理员</span>
+        <span class="tag">玩家 · 洛克居民</span>
+        <span class="tag">精灵 · 独立账号</span>
+        <span class="tag">长线运营</span>
+      </div>
+    </div>
+
+    <!-- 中间关系 -->
+    <div class="relation">
+      <div class="rel-arrow">→</div>
+      <div class="rel-text">助推出圈</div>
+    </div>
+
+    <!-- 模块二 -->
+    <div class="module mod-2">
+      <div class="mod-label">模块二 · 活动引擎</div>
+      <div class="mod-title">红薯研究学院<br>精灵研究生院</div>
+      <div class="mod-core">以「学分累计制」游戏化激励机制，将 UGC 参与包装成入学→研习→考试→毕业的完整旅程，规模化撬动笔记产消，最终以 REDLAND 线下拨穗典礼收口。</div>
+      <div class="mod-tags">
+        <span class="tag">学院招生</span>
+        <span class="tag">入学研习</span>
+        <span class="tag">学位考试</span>
+        <span class="tag">REDLAND 毕业典礼</span>
+      </div>
+    </div>
+
   </div>
+
+  <!-- 两模块关系说明 -->
+  <div class="relation-box">
+    <div class="rel-item">
+      <div class="rel-icon">🏡</div>
+      <div class="rel-title">居民圈是容器</div>
+      <div class="rel-desc">研究学院的所有内容<br>在居民圈中沉淀和流通</div>
+    </div>
+    <div class="rel-item">
+      <div class="rel-icon">🚀</div>
+      <div class="rel-title">学院是引爆器</div>
+      <div class="rel-desc">通过激励机制规模化拉动<br>居民圈的内容产消</div>
+    </div>
+    <div class="rel-item">
+      <div class="rel-icon">🔄</div>
+      <div class="rel-title">相互正向循环</div>
+      <div class="rel-desc">居民圈生态越活跃<br>学院参与感越强，反之亦然</div>
+    </div>
+  </div>
+
+  <!-- 用户旅程闭环 -->
+  <div class="loop">
+    <div class="loop-node">加入居民圈</div>
+    <div class="loop-arr">›</div>
+    <div class="loop-node">报名研究学院</div>
+    <div class="loop-arr">›</div>
+    <div class="loop-node">完成学分任务</div>
+    <div class="loop-arr">›</div>
+    <div class="loop-node highlight">🎓 REDLAND 线下拨穗</div>
+  </div>
+
 </div>
-
-<!-- ========== 方案1：居民圈 ========== -->
-<div class="scheme s1">
-  <div class="scheme-header">
-    <div>
-      <div class="scheme-num">模块一</div>
-      <div class="scheme-title">洛克王国世界 · 居民圈</div>
-    </div>
-    <div class="scheme-subtitle">打造游戏世界观的红薯镜像 · 玩家以「原住民」身份活在洛克世界里</div>
-  </div>
-
-  <div class="scheme-body">
-
-    <!-- 三类角色 -->
-    <div style="font-size:11px;color:#888;margin-bottom:8px;letter-spacing:1px;">— 三类角色构成 —</div>
-    <div class="roles">
-      <div class="role-card">
-        <div class="role-name">🏛️ 官方角色</div>
-        <div class="role-desc">官号作为「驿站管理员」，在场但不破梗，维持世界观秩序</div>
-      </div>
-      <div class="role-card">
-        <div class="role-name">🧙 洛克居民 / 精灵学研究生</div>
-        <div class="role-desc">用户自设身份，沉浸发帖，以第一视角活在洛克世界中</div>
-      </div>
-      <div class="role-card">
-        <div class="role-name">🐾 洛克精灵</div>
-        <div class="role-desc">精灵有自己的账号，发布「人类观察」「共处日常」等第一视角内容</div>
-      </div>
-    </div>
-
-    <!-- 四个 Tab 内容区 -->
-    <div style="font-size:11px;color:#888;margin-bottom:8px;letter-spacing:1px;">— 居民圈四大内容 Tab —</div>
-    <div class="tabs">
-      <div class="tab-card">
-        <div class="tab-title">📋 全部动态</div>
-        <div class="tab-desc">居民圈入口，综合内容流</div>
-      </div>
-      <div class="tab-card">
-        <div class="tab-title">⚡ 实时</div>
-        <div class="tab-desc">活动进行中的实时发帖讨论</div>
-      </div>
-      <div class="tab-card">
-        <div class="tab-title">🏡 王国日常</div>
-        <div class="tab-desc">原住民的世界生活流水账<br>洛克有房价、有学院生活、有精灵室友</div>
-        <div class="tab-example">「想在彼得大道租一居室，预算4000洛克贝，房东私聊」</div>
-      </div>
-      <div class="tab-card">
-        <div class="tab-title">🔭 精灵观察实录</div>
-        <div class="tab-desc">精灵第一视角记录与洛克的日常碰撞</div>
-        <div class="tab-example">「今天又帮小洛克赢了一局！不愧是我！」</div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ========== 方案2：精灵研究生院 ========== -->
-<div class="scheme s2">
-  <div class="scheme-header" style="background:linear-gradient(90deg,#4338ca,#7c3aed);color:#fff;">
-    <div>
-      <div class="scheme-num">模块二</div>
-      <div class="scheme-title">成立「红薯研究学院」助推居民圈出圈</div>
-    </div>
-    <div class="scheme-subtitle">学分累计制 · 笔记发布即入学 · 线上→线下完整闭环</div>
-  </div>
-
-  <div class="scheme-body">
-    <div class="steps">
-
-      <!-- STEP 1 学院招生 -->
-      <div class="step-col st1">
-        <div class="col-head">
-          <div class="col-step">STEP 01</div>
-          <div class="col-title">🏫 学院招生</div>
-        </div>
-
-        <div class="leaf">
-          <div class="leaf-icon">📋</div>
-          <div class="leaf-content">
-            <div class="leaf-title">招生简章联合发布</div>
-            <div class="leaf-desc">洛克王国 × 游戏薯 共创<br>入学即送独家道具</div>
-          </div>
-        </div>
-
-        <div class="leaf">
-          <div class="leaf-icon">🎬</div>
-          <div class="leaf-content">
-            <div class="leaf-title">师兄师姐入学 Vlog</div>
-            <div class="leaf-desc">生态作者约稿，招揽同门学弟妹</div>
-          </div>
-        </div>
-
-        <div class="leaf">
-          <div class="leaf-icon">🔬</div>
-          <div class="leaf-content">
-            <div class="leaf-title">三大研究方向</div>
-            <div class="tags">
-              <span class="tag">精灵学概论</span>
-              <span class="tag">精灵学美育</span>
-              <span class="tag">精灵学实务</span>
-            </div>
-            <div class="leaf-desc" style="margin-top:4px;">各设带教导师，周期更新教材引领创作</div>
-          </div>
-        </div>
-
-        <div class="leaf">
-          <div class="leaf-icon">🛡️</div>
-          <div class="leaf-content">
-            <div class="leaf-title">八大派系精灵应援</div>
-            <div class="leaf-desc">草/水/岩/火/冰/电/翼/幽<br>话题数据排行，第一名解锁线下精灵特展或游戏内道馆徽章</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- STEP 2 入学研习 -->
-      <div class="step-col st2">
-        <div class="col-head">
-          <div class="col-step">STEP 02</div>
-          <div class="col-title">📚 入学研习</div>
-        </div>
-
-        <div class="leaf">
-          <div class="leaf-icon">🧪</div>
-          <div class="leaf-content">
-            <div class="leaf-title">派系测试 H5</div>
-            <div class="leaf-desc">「你是哪只洛克精灵？」<br>结果页引导发布应援笔记</div>
-            <div class="tags" style="margin-top:4px;">
-              <span class="tag">#我的本命精灵派系</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="leaf">
-          <div class="leaf-icon">📖</div>
-          <div class="leaf-content">
-            <div class="leaf-title">教材研习</div>
-            <div class="leaf-desc">导师周期约稿编纂教材<br>活动页分 tab 承接三大方向</div>
-          </div>
-        </div>
-
-        <div class="leaf">
-          <div class="leaf-icon">✍️</div>
-          <div class="leaf-content">
-            <div class="leaf-title">UGC 激励 · 发布研究成果</div>
-            <div class="leaf-desc">发笔记 = 提交研究成果<br>三大方向即三大征稿赛道</div>
-          </div>
-        </div>
-
-        <div class="leaf">
-          <div class="leaf-icon">💌</div>
-          <div class="leaf-content">
-            <div class="leaf-title">表白墙话题专栏</div>
-            <div class="leaf-desc">流量券激励，长线打造<br>#洛克红薯研究生院表白墙</div>
-            <div class="tags" style="margin-top:4px;">
-              <span class="tag">精灵与洛克互动实况</span>
-              <span class="tag">捞人文学</span>
-              <span class="tag">捡手机文学</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- STEP 3 学位考试 -->
-      <div class="step-col st3">
-        <div class="col-head">
-          <div class="col-step">STEP 03</div>
-          <div class="col-title">📝 学位考试</div>
-        </div>
-
-        <div class="leaf">
-          <div class="leaf-icon">📋</div>
-          <div class="leaf-content">
-            <div class="leaf-title">全民出卷</div>
-            <div class="leaf-desc">全站玩家投稿题目 + 导师压轴<br>用户 × 官方 × 作者三方共创<br>题目页标注「本题由 @xxx 投稿」</div>
-          </div>
-        </div>
-
-        <div class="leaf">
-          <div class="leaf-icon">🎯</div>
-          <div class="leaf-content">
-            <div class="leaf-title">答题 → 晒分 → 领奖</div>
-            <div class="leaf-desc">高分/满分赢游戏周边<br>艾特 @洛克王国世界 @游戏薯</div>
-            <div class="score-list">
-              <div class="score-item"><b>100</b>「或许你想留校任教？」</div>
-              <div class="score-item"><b>≥90</b>「可以毕业了，别来烦我」</div>
-              <div class="score-item"><b>≥60</b>「研究方向正确，仍有盲区」</div>
-              <div class="score-item"><b>&lt;60</b>「建议重新入学」</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="leaf">
-          <div class="leaf-icon">⏰</div>
-          <div class="leaf-content">
-            <div class="leaf-title">节奏：活动尾声释放</div>
-            <div class="leaf-desc">最后一周上线，制造冲刺感</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- STEP 4 学位典礼 -->
-      <div class="step-col st4">
-        <div class="col-head">
-          <div class="col-step">STEP 04</div>
-          <div class="col-title">🎓 学位典礼</div>
-        </div>
-
-        <div class="leaf" style="border-width:2px;">
-          <div class="leaf-icon">👑</div>
-          <div class="leaf-content">
-            <div class="leaf-title">拨穗仪式 <span class="hl">REDLAND 结合</span></div>
-            <div class="leaf-desc">Coser 扮演研究员为用户拨穗<br>颁发学位证书<br>出示活动页「学分修满凭证」</div>
-          </div>
-        </div>
-
-        <div class="leaf">
-          <div class="leaf-icon">🏛️</div>
-          <div class="leaf-content">
-            <div class="leaf-title">学位考试现场版</div>
-            <div class="leaf-desc">中心化考场（Coser监考）<br>随机考场（路人答题彩蛋）</div>
-          </div>
-        </div>
-
-        <div class="leaf">
-          <div class="leaf-icon">🎤</div>
-          <div class="leaf-content">
-            <div class="leaf-title">导师公开课</div>
-            <div class="leaf-desc">易错题讲解 + 精灵冷知识小讲堂<br>内容与 NPC 答题彩蛋关联</div>
-          </div>
-        </div>
-
-        <div class="leaf">
-          <div class="leaf-icon">🗺️</div>
-          <div class="leaf-content">
-            <div class="leaf-title">精灵抓捕彩蛋</div>
-            <div class="leaf-desc">展位发放「精灵捕获点位」地图<br>Coser NPC 答题得卡片<br>集齐 N 张兑换精灵周边</div>
-          </div>
-        </div>
-
-        <div class="leaf">
-          <div class="leaf-icon">📜</div>
-          <div class="leaf-content">
-            <div class="leaf-title">学分解锁机制</div>
-            <div class="leaf-desc">完成前序五项任务累计学分<br>达标方可参与线下拨穗仪式</div>
-            <div class="tags" style="margin-top:4px;">
-              <span class="tag">选派系</span>
-              <span class="tag">研习教材</span>
-              <span class="tag">发布成果</span>
-              <span class="tag">共创试卷</span>
-              <span class="tag">完成考试</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
 </body>
 </html>
