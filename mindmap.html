@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>活动方案 · 洛克王国 × 小红书</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: #f5f4f0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 32px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 900px;
+}
+
+/* 页面标题 */
+.page-label {
+  font-size: 11px;
+  color: #aaa;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* 大方案标题框 */
+.main-title {
+  background: #1a1a1a;
+  color: #fff;
+  border-radius: 14px;
+  padding: 20px 32px;
+  text-align: center;
+  margin-bottom: 28px;
+}
+.main-title h1 {
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+.main-title p {
+  font-size: 12px;
+  opacity: .5;
+  letter-spacing: 1px;
+}
+
+/* 两模块并排 */
+.modules {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  gap: 0;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+/* 模块卡片 */
+.module {
+  border-radius: 14px;
+  padding: 22px 22px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.mod-1 {
+  background: #ecfdf5;
+  border: 2px solid #6ee7b7;
+}
+.mod-2 {
+  background: #ede9fe;
+  border: 2px solid #c4b5fd;
+}
+
+.mod-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  opacity: .6;
+}
+.mod-1 .mod-label { color: #059669; }
+.mod-2 .mod-label { color: #6d28d9; }
+
+.mod-title {
+  font-size: 16px;
+  font-weight: 900;
+  color: #111;
+  line-height: 1.3;
+}
+
+.mod-core {
+  font-size: 12px;
+  line-height: 1.65;
+  color: #444;
+}
+
+.mod-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 2px;
+}
+.tag {
+  font-size: 10.5px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+.mod-1 .tag { background: #d1fae5; color: #065f46; }
+.mod-2 .tag { background: #ddd6fe; color: #4c1d95; }
+
+/* 中间箭头/关系列 */
+.relation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 4px;
+}
+.rel-arrow {
+  font-size: 22px;
+  color: #bbb;
+}
+.rel-text {
+  font-size: 10px;
+  color: #aaa;
+  writing-mode: vertical-rl;
+  letter-spacing: 2px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* 关系说明区 */
+.relation-box {
+  background: #fff;
+  border: 1.5px solid #e5e5e5;
+  border-radius: 12px;
+  padding: 16px 22px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-bottom: 0;
+}
+.rel-item {
+  padding: 10px 16px;
+  text-align: center;
+  border-right: 1px solid #f0f0f0;
+}
+.rel-item:last-child { border-right: none; }
+.rel-icon { font-size: 18px; margin-bottom: 5px; }
+.rel-title {
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 3px;
+}
+.rel-desc {
+  font-size: 10.5px;
+  color: #888;
+  line-height: 1.55;
+}
+
+/* 底部闭环 */
+.loop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.loop-node {
+  background: #fff;
+  border: 1.5px solid #ddd;
+  border-radius: 30px;
+  padding: 8px 18px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #333;
+  white-space: nowrap;
+}
+.loop-arr {
+  color: #bbb;
+  font-size: 18px;
+  padding: 0 4px;
+  font-weight: 900;
+}
+.loop-node.highlight {
+  background: #1a1a1a;
+  color: #fff;
+  border-color: #1a1a1a;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="page-label">四、活动方案</div>
+
+  <!-- 大方案总标题 -->
+  <div class="main-title">
+    <h1>打造「洛克王国世界」的红薯原生生态</h1>
+    <p>以世界观沉浸为基础 · 以内容激励为驱动 · 以线下典礼为收口</p>
+  </div>
+
+  <!-- 两模块 -->
+  <div class="modules">
+
+    <!-- 模块一 -->
+    <div class="module mod-1">
+      <div class="mod-label">模块一 · 生态底座</div>
+      <div class="mod-title">洛克王国世界<br>居民圈</div>
+      <div class="mod-core">以游戏真实地图为舞台，搭建红薯原生社区阵地。玩家不讨论游戏，而是以「原住民」身份活在洛克世界里，持续产出世界观沉浸内容。</div>
+      <div class="mod-tags">
+        <span class="tag">官号 · 驿站管理员</span>
+        <span class="tag">玩家 · 洛克居民</span>
+        <span class="tag">精灵 · 独立账号</span>
+        <span class="tag">长线运营</span>
+      </div>
+    </div>
+
+    <!-- 中间关系 -->
+    <div class="relation">
+      <div class="rel-arrow">→</div>
+      <div class="rel-text">助推出圈</div>
+    </div>
+
+    <!-- 模块二 -->
+    <div class="module mod-2">
+      <div class="mod-label">模块二 · 活动引擎</div>
+      <div class="mod-title">精灵学院红薯研究生院</div>
+      <div class="mod-core">以「学分累计制」游戏化激励机制，将 UGC 参与包装成入学→研习→考试→毕业的完整旅程，规模化撬动笔记产消，最终以 REDLAND 线下拨穗典礼收口。</div>
+      <div class="mod-tags">
+        <span class="tag">学院招生</span>
+        <span class="tag">入学研习</span>
+        <span class="tag">学位考试</span>
+        <span class="tag">REDLAND 毕业典礼</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 两模块关系说明 -->
+  <div class="relation-box">
+    <div class="rel-item">
+      <div class="rel-icon">🏡</div>
+      <div class="rel-title">居民圈是容器</div>
+      <div class="rel-desc">包含研究生院的洛克所有内容<br>在居民圈中沉淀和流通</div>
+    </div>
+    <div class="rel-item">
+      <div class="rel-icon">🚀</div>
+      <div class="rel-title">学院是引爆器</div>
+      <div class="rel-desc">通过激励活动规模化拉动<br>生态产消，助力居民圈破圈</div>
+    </div>
+    <div class="rel-item">
+      <div class="rel-icon">🔄</div>
+      <div class="rel-title">相互正向循环</div>
+      <div class="rel-desc">居民圈生态越活跃<br>学院参与感越强，反之亦然</div>
+    </div>
+  </div>
+
+  <!-- 用户旅程闭环 -->
+  <div class="loop">
+    <div class="loop-node">加入居民圈</div>
+    <div class="loop-arr">›</div>
+    <div class="loop-node">报名研究学院</div>
+    <div class="loop-arr">›</div>
+    <div class="loop-node">完成学分任务</div>
+    <div class="loop-arr">›</div>
+    <div class="loop-node">🎓 REDLAND 线下拨穗</div>
+  </div>
+
+</div>
+</body>
+</html>
